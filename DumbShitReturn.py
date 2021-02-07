@@ -7,6 +7,10 @@ import random
 
 bot = commands.Bot(command_prefix='.')
 counter = {}
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 @bot.event
 async def on_ready():
@@ -41,4 +45,4 @@ async def dumb_shit_loop(ctx,loop=5,speech='False'):
 #bot.loop.create_task(search_submissions())
 
 
-bot.run('ODA4MDkwNTE4NDk1MDM1NDAy.YCBe8Q.Vgkunv1MEoMLobffkTyQLD0Lh_4')
+bot.run(TOKEN)
