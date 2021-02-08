@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # bot.py
 import os
 import random
@@ -96,4 +95,3 @@ async def dumb_shit_loop(ctx,loop=5,speech='False'):
 
 
 bot.run(TOKEN)
->>>>>>> 9dc94976c8e5bcb6b93c117b9ee3dc6c8733e767
