@@ -7,9 +7,8 @@ import random
 
 bot = commands.Bot(command_prefix='.')
 counter = {}
-from dotenv import load_dotenv
 
-load_dotenv()
+
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 @bot.event
