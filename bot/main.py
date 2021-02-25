@@ -32,7 +32,7 @@ bot = commands.Bot(command_prefix='.')
 counter = {}
 
 
-#TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 @bot.event
 async def on_ready():
@@ -224,5 +224,5 @@ def retrieveAuthors(messages):
     return removeDuplicates(flatten(authors))
 
 
-bot.run('ODE0NTM5ODA3NTMwODExNDQz.YDfVTw.meD_-3RZcfDX5gX2oRHkkl_2FW4')
-#bot.run(TOKEN)
+#bot.run('ODE0NTM5ODA3NTMwODExNDQz.YDfVTw.meD_-3RZcfDX5gX2oRHkkl_2FW4')
+bot.run(TOKEN)
