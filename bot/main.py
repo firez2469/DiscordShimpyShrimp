@@ -140,5 +140,45 @@ async def dumb_shit_getall(ctx, name=""):
     
     await ctx.send(outputMessage)
     
+    
+#takes a 2 dimensional list and returns it as a single dimensional list
+def flatten(list2d):
+    flatList = []
+    
+    for element in list2d:
+        if(type(element) is list):
+            for item in element:
+                flatList.append(item)
+        else:
+            flatList.append(element)
+    return flatList
+
+def removeDuplicates(stringList):
+    unique = []
+    
+    for element in stringList:
+        if element not in unique:
+            unique.append(element)
+    return unique     
+
+# ASSUME: message input is a string
+def lookForAuthor(message):
+    messageList = message.split("\n")
+    authorList = []
+    
+    for msg in messageList:
+        splitMsg = msg.split("\"")
+        if(splitMsg[0] == ''):
+            authorList.append(splitMsg[len(splitMsg) - 1].strip(" :-"))
+        elif(splitMsg[len(splitMsg) - 1] == ''):
+            authorList.append(splitMsg[0].strip(" :-"))
+    return authorList
+        
+
+def retrieveAuthors(messages):
+    authors = []
+    for msg in messages:
+        authors.append(lookForAuthor(msg.content))
+    return removeDuplicates(flatten(authors))
 
 bot.run(TOKEN)
