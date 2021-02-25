@@ -124,5 +124,20 @@ async def dumb_shit_percent(ctx, name=""):
     
     await ctx.send(outputMessage)
     
+@bot.command()
+async def dumb_shit_getall(ctx, name=""):
+    channel = bot.get_channel(803112589156024371)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    
+    theirQuotes = []
+    
+    for msg in messages:
+        if(stringContainsName(msg.content, name)):
+            theirQuotes.append(msg.content)
+    
+    for quote in theirQuotes:
+        await ctx.send(quote)    
+    
+    
 
 bot.run(TOKEN)
