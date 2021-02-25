@@ -5,6 +5,29 @@ from discord.ext import commands
 import asyncio
 import random 
 
+#helpful commands for dealing with messages
+#takes a Message object and returns it's content
+def messageToString(msg):
+    return msg.content
+
+#determines whether a name appears in the String
+def stringContainsName(msg, name):
+    if name.lower() in msg.lower():
+        return True
+    else:
+        return False
+
+#Takes a list of messages and returns all messages as Strings
+def messageListToStringList(msgList):
+    stringList = []
+    for msg in msgList:
+        stringList.append(msg.content)
+    return stringList
+        
+
+
+
+
 bot = commands.Bot(command_prefix='.')
 counter = {}
 
@@ -45,6 +68,25 @@ async def dumb_shit_loop(ctx,loop=5,speech='False'):
 async def dumb_shit_shaun(ctx):
     await ctx.send("Guys I can program discord bots lol")
 #bot.loop.create_task(search_submissions())
+
+@bot.command()
+async def dumb_shit_specific(ctx, name=""):
+    channel = bot.get_channel(803112589156024371)
+    messages = await channel.history(limit=400).flatten()
+    
+    
+    containingName = []
+    
+    for msg in messages:
+        if(stringContainsName(msg.content, name)):
+            containingName.append(msg)
+    if (len(containingName) < 1):
+        await ctx.send(("No dumb shit quotes found by " + name))
+    else:
+        msg = random.choice(containingName)
+        await ctx.send(msg.content)
+        
+
 
 
 bot.run(TOKEN)
