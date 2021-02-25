@@ -41,6 +41,9 @@ async def dumb_shit_loop(ctx,loop=5,speech='False'):
         await ctx.send(msg.content,tts=isTTS)
 
 
+@bot.command()
+async def dumb_shit_shaun(ctx):
+    await ctx.send("Guys I can program discord bots lol")
 #bot.loop.create_task(search_submissions())
 
 
