@@ -5,6 +5,15 @@ from discord.ext import commands
 import asyncio
 import random 
 
+
+#def takes a string and converts it into a list of characters
+def stringToCharList(string):
+    charList = []
+    
+    for char in string:
+        charList.append(char)
+    return charList
+        
 #takes a list of chars and concatenates all indices left to right
 def charListToString(charList):
     finalString =  ''
@@ -15,18 +24,29 @@ def charListToString(charList):
     
 #takes a string and removes all instances of the specified character
 def removeChar(targetChar, string):
-    stringToChars = []
+    stringToChars = stringToCharList(string)
     
-    for char in string:
-        stringToChars.append(char)
-    
-    cleanStringList = []
+    cleanCharList = []
     
     for char in stringToChars:
         if(not(char == targetChar)):
-            cleanStringList.append(char)
-    return charListToString(cleanStringList)
+            cleanCharList.append(char)
+    return charListToString(cleanCharList)
 
+#Takes a string and replaces every instance of the target character with the
+#replacement character
+def replaceCharIn(targetChar, replacementChar, msg):
+    stringToChars = stringToCharList(msg)
+    
+    cleanCharList = []
+    
+    for char in stringToChars:
+        if(char == targetChar):
+            cleanCharList.append(replacementChar)
+        else:
+            cleanCharList.append(char)
+    return charListToString(cleanCharList)
+            
 #helpful commands for dealing with messages
 #takes a Message object and returns it's content
 def messageToString(msg):
@@ -34,7 +54,7 @@ def messageToString(msg):
 
 #determines whether a name appears in the String
 def stringContainsName(msg, name):
-    if name.lower() in removeChar("-", msg.lower()).split():
+    if name.lower() in replaceCharIn(":", " ", replaceCharIn("-", " ", msg.lower())).split():
         return True
     else:
         return False
