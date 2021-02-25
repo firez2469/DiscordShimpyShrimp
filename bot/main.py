@@ -139,6 +139,9 @@ async def dumb_shit_getall(ctx, name=""):
         outputMessage = outputMessage + quote + "\n\n" 
     
     await ctx.send(outputMessage)
+
+
+
     
     
 #takes a 2 dimensional list and returns it as a single dimensional list
@@ -180,5 +183,6 @@ def retrieveAuthors(messages):
     for msg in messages:
         authors.append(lookForAuthor(msg.content))
     return removeDuplicates(flatten(authors))
+
 
 bot.run(TOKEN)
