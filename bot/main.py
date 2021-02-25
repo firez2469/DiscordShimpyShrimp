@@ -140,9 +140,48 @@ async def dumb_shit_getall(ctx, name=""):
     
     await ctx.send(outputMessage)
 
-
-
+@bot.command()
+async def leaderboards(ctx):
+    _leaderboards = {}
+    channel = bot.get_channel(803112589156024371)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    authors = retrieveAuthors(messages)
+    for author in authors:
+        count = findAuthorCount(messages,author)
+        _leaderboards[author] = count
+    newLeaderboards = sortDict(_leaderboards)
+    msg= "Dumb Shit Leaderboards: \n"
+    for auth in newLeaderboards:
+        msg+="{0}:{1} quotes \n".format(auth,newLeaderboards[auth])
+    await ctx.send(msg)
     
+def findAuthorCount(messages,author):
+    count =0
+    for msg in messages:
+        if(stringContainsName(msg.content,name)):
+            count+=1
+    return count
+    
+dic = {"a":1,"b":9,"c":5}
+
+def sortDict(dict1):
+    maxVal = -1000
+    maxKey = ""
+    
+    if len(dict1)>1:
+        for k in dict1:
+            if dict1[k]>maxVal:
+                maxVal = dict1[k]
+                maxKey = k
+        dict1.pop(maxKey)
+        newDict =dict1
+        newVal= {maxKey:maxVal}
+        newVal.update(sortDict(newDict))
+        
+        return newVal
+    else:
+        print(dict1)
+        return dict1
     
 #takes a 2 dimensional list and returns it as a single dimensional list
 def flatten(list2d):
@@ -171,19 +210,19 @@ def lookForAuthor(message):
     
     for msg in messageList:
         splitMsg = msg.split("\"")
-        if(splitMsg[0] == '' and splitMsg[len(splitMsg) - 1] == ''):
-            authorList = authorList
-        elif(splitMsg[0] == ''):
+        if(splitMsg[0] == ''):
             authorList.append(splitMsg[len(splitMsg) - 1].strip(" :-"))
         elif(splitMsg[len(splitMsg) - 1] == ''):
             authorList.append(splitMsg[0].strip(" :-"))
     return authorList
+        
 
 def retrieveAuthors(messages):
     authors = []
     for msg in messages:
         authors.append(lookForAuthor(msg.content))
     return removeDuplicates(flatten(authors))
+
 
 
 bot.run(TOKEN)
