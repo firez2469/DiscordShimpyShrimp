@@ -108,7 +108,7 @@ async def dumb_shit_loop(ctx,loop=5,speech='False'):
 
 @bot.command()
 async def dumb_shit_shaun(ctx):
-    await ctx.send("Guys I can program discord bots lol")
+    await ctx.send("As Nick would say this is definitely not in my character archetype to do this.\nFuck you Nick lol")
 #bot.loop.create_task(search_submissions())
 
 @bot.command()
