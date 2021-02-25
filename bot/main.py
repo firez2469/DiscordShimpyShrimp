@@ -27,7 +27,7 @@ def messageListToStringList(msgList):
 
 
 
-
+MAX_MSGS = 400
 bot = commands.Bot(command_prefix='.')
 counter = {}
 
@@ -48,7 +48,7 @@ async def dumb_shit(ctx,speech='False'):
     isTTS = speech=='True'
     channel = bot.get_channel(803112589156024371)
     #channel = bot.get_channel(803349900036669490)
-    messages = await channel.history(limit=200).flatten()
+    messages = await channel.history(limit=MAX_MSGS).flatten()
     msg = random.choice(messages)
     
     await ctx.send(msg.content,tts=isTTS)
@@ -58,7 +58,7 @@ async def dumb_shit(ctx,speech='False'):
 async def dumb_shit_loop(ctx,loop=5,speech='False'):
     isTTS = speech=='True'
     channel =bot.get_channel(803112589156024371)
-    messages = await channel.history(limit=200).flatten()
+    messages = await channel.history(limit=MAX_MSGS).flatten()
     for av in range(loop):
         msg = random.choice(messages)
         await ctx.send(msg.content,tts=isTTS)
@@ -72,7 +72,7 @@ async def dumb_shit_shaun(ctx):
 @bot.command()
 async def dumb_shit_specific(ctx, name=""):
     channel = bot.get_channel(803112589156024371)
-    messages = await channel.history(limit=400).flatten()
+    messages = await channel.history(limit=MAX_MSGS).flatten()
     
     
     containingName = []
@@ -90,5 +90,22 @@ async def dumb_shit_specific(ctx, name=""):
 async def contributors(ctx):
     await ctx.send('Bot was developed by firez2469 \n Contributed to by DjSheep')
 
+@bot.command()
+async def dumb_shit_count(ctx, name=""):
+    channel = bot.get_channel(803112589156024371)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    
+    count = 0
+    outputMessage = ""
+    
+    for msg in messages:
+        if(stringContainsName(msg.content, name)):
+            count += 1
+    if(name == ""):
+        outputMessage = "As a server we have " + str(count) + " dumb shit quotes. I am sorry everyone"
+    else:
+        outputMessage = name + " has contributed " + str(count) + " dumb shit quotes... wow"
+    await ctx.send(outputMessage)
+    
 
 bot.run(TOKEN)
