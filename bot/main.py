@@ -130,14 +130,15 @@ async def dumb_shit_getall(ctx, name=""):
     messages = await channel.history(limit=MAX_MSGS).flatten()
     
     theirQuotes = []
-    
+    outputMessage = ""
     for msg in messages:
         if(stringContainsName(msg.content, name)):
             theirQuotes.append(msg.content)
     
     for quote in theirQuotes:
-        await ctx.send(quote)    
+        outputMessage = outputMessage + quote + "\n" 
     
+    await ctx.send(outputMessage)
     
 
 bot.run(TOKEN)
