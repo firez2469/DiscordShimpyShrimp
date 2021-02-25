@@ -46,18 +46,30 @@ def replaceCharIn(targetChar, replacementChar, msg):
         else:
             cleanCharList.append(char)
     return charListToString(cleanCharList)
+
+#goes through a list of chars and replaces all of them with the replacement char
+def replaceCharsIn(targetChars, replacementChar, string):
+    finalString = string
+    
+    for char in targetChars:
+        finalString = replaceCharIn(char, replacementChar, finalString)
+    return finalString
             
 #helpful commands for dealing with messages
 #takes a Message object and returns it's content
 def messageToString(msg):
     return msg.content
 
+TARGET_CHARS = stringToCharList("-?.,;:!")
+
 #determines whether a name appears in the String
 def stringContainsName(msg, name):
-    if name.lower() in replaceCharIn(":", " ", replaceCharIn("-", " ", msg.lower())).split():
+    if name.lower() in replaceCharsIn(TARGET_CHARS," ", msg.lower()).split():
         return True
     else:
         return False
+
+
 
 #Takes a list of messages and returns all messages as Strings
 def messageListToStringList(msgList):
