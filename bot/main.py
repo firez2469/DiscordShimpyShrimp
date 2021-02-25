@@ -86,7 +86,9 @@ async def dumb_shit_specific(ctx, name=""):
         msg = random.choice(containingName)
         await ctx.send(msg.content)
         
-
+@bot.command()
+async def contributors(ctx):
+    await ctx.send('Bot was developed by firez2469 \n Contributed to by DjSheep')
 
 
 bot.run(TOKEN)
