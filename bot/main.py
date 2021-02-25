@@ -119,7 +119,7 @@ async def dumb_shit_percent(ctx, name=""):
         if(stringContainsName(msg.content, name)):
             theirQuotes += 1
     
-    percent = int((theirQuotes / totalQuotes) * 1000)
+    percent = int((theirQuotes / totalQuotes) * 1000) / 10
     outputMessage = name + " shares " + str(percent) + "%" + " of all dumb shit quotes."
     
     await ctx.send(outputMessage)
