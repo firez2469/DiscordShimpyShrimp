@@ -224,5 +224,4 @@ def retrieveAuthors(messages):
     return removeDuplicates(flatten(authors))
 
 
-#bot.run('ODE0NTM5ODA3NTMwODExNDQz.YDfVTw.meD_-3RZcfDX5gX2oRHkkl_2FW4')
 bot.run(TOKEN)
