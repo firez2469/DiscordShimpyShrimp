@@ -171,12 +171,13 @@ def lookForAuthor(message):
     
     for msg in messageList:
         splitMsg = msg.split("\"")
-        if(splitMsg[0] == ''):
+        if(splitMsg[0] == '' and splitMsg[len(splitMsg) - 1] == ''):
+            authorList = authorList
+        elif(splitMsg[0] == ''):
             authorList.append(splitMsg[len(splitMsg) - 1].strip(" :-"))
         elif(splitMsg[len(splitMsg) - 1] == ''):
             authorList.append(splitMsg[0].strip(" :-"))
     return authorList
-        
 
 def retrieveAuthors(messages):
     authors = []
