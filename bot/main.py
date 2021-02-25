@@ -136,7 +136,7 @@ async def dumb_shit_getall(ctx, name=""):
             theirQuotes.append(msg.content)
     
     for quote in theirQuotes:
-        outputMessage = outputMessage + quote + "\n" 
+        outputMessage = outputMessage + quote + "\n\n" 
     
     await ctx.send(outputMessage)
     
