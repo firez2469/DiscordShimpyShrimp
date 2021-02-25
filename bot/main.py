@@ -97,13 +97,13 @@ async def dumb_shit_count(ctx, name=""):
     
     count = 0
     outputMessage = ""
-    
-    for msg in messages:
-        if(stringContainsName(msg.content, name)):
-            count += 1
     if(name == ""):
-        outputMessage = "As a server we have " + str(count) + " dumb shit quotes. I am sorry everyone"
-    else:
+        outputMessage = "As a server we have " + str(len(messages)) + " dumb shit quotes. I am sorry everyone."
+    else: 
+        for msg in messages:
+            if(stringContainsName(msg.content, name)):
+                count += 1
+        
         outputMessage = name + " has contributed " + str(count) + " dumb shit quotes... wow"
     await ctx.send(outputMessage)
     
