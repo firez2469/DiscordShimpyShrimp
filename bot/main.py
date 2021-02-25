@@ -12,7 +12,7 @@ def messageToString(msg):
 
 #determines whether a name appears in the String
 def stringContainsName(msg, name):
-    if name.lower() in msg.lower().split():
+    if name.lower() in msg.lower().strip("-").split():
         return True
     else:
         return False
