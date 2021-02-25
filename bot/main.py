@@ -5,6 +5,28 @@ from discord.ext import commands
 import asyncio
 import random 
 
+#takes a list of chars and concatenates all indices left to right
+def charListToString(charList):
+    finalString =  ''
+    
+    for char in charList:
+        finalString += char
+    return finalString
+    
+#takes a string and removes all instances of the specified character
+def removeChar(targetChar, string):
+    stringToChars = []
+    
+    for char in string:
+        stringToChars.append(char)
+    
+    cleanStringList = []
+    
+    for char in stringToChars:
+        if(not(char == targetChar)):
+            cleanStringList.append(char)
+    return charListToString(cleanStringList)
+
 #helpful commands for dealing with messages
 #takes a Message object and returns it's content
 def messageToString(msg):
@@ -12,7 +34,7 @@ def messageToString(msg):
 
 #determines whether a name appears in the String
 def stringContainsName(msg, name):
-    if name.lower() in msg.lower().strip("-").split():
+    if name.lower() in removeChar("-", msg.lower()).split():
         return True
     else:
         return False
