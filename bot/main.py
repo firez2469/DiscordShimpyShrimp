@@ -146,7 +146,7 @@ async def dumb_shit_count(ctx, name=""):
             if(stringContainsName(msg.content, name)):
                 count += 1
         
-        outputMessage = name + " has contributed " + str(count) + " dumb shit quotes... wow"
+        outputMessage = name.title() + " has contributed " + str(count) + " dumb shit quotes... wow"
     await ctx.send(outputMessage)
     
 @bot.command()
@@ -162,7 +162,7 @@ async def dumb_shit_percent(ctx, name=""):
             theirQuotes += 1
     
     percent = int((theirQuotes / totalQuotes) * 1000) / 10
-    outputMessage = name + " shares " + str(percent) + "%" + " of all dumb shit quotes."
+    outputMessage = name.title() + " shares " + str(percent) + "%" + " of all dumb shit quotes."
     
     await ctx.send(outputMessage)
     
