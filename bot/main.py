@@ -107,5 +107,22 @@ async def dumb_shit_count(ctx, name=""):
         outputMessage = name + " has contributed " + str(count) + " dumb shit quotes... wow"
     await ctx.send(outputMessage)
     
+@bot.command()
+async def dumb_shit_percent(ctx, name=""):
+    channel = bot.get_channel(803112589156024371)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    
+    totalQuotes = len(messages)
+    theirQuotes = 0
+    
+    for msg in messages:
+        if(stringContainsName(msg.content, name)):
+            theirQuotes += 1
+    
+    percent = int((theirQuotes / totalQuotes) * 100)
+    outputMessage = name + " shares " + str(percent) + "%" + " of all dumb shit quotes."
+    
+    await ctx.send(outputMessage)
+    
 
 bot.run(TOKEN)
