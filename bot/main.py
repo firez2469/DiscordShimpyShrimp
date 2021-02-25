@@ -140,18 +140,9 @@ async def dumb_shit_getall(ctx, name=""):
     
     await ctx.send(outputMessage)
 
-@bot.command()
-async def dumb_shit_leaderboards(ctx):
-    channel = bot.get_channel(803112589156024371)
-    messages = await channel.history(limit=MAX_MSGS).flatten()
-    names = []
-    for message in messages:
-        if(' - ' in message.content):
-            name = message.content.split('"')[2]
-            names.append(name)
-    for name in names:
-        print(name)
+
 
     
+
 
 bot.run(TOKEN)
