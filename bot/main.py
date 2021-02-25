@@ -32,7 +32,7 @@ bot = commands.Bot(command_prefix='.')
 counter = {}
 
 
-TOKEN = os.getenv('DISCORD_TOKEN')
+#TOKEN = os.getenv('DISCORD_TOKEN')
 
 @bot.event
 async def on_ready():
@@ -158,7 +158,7 @@ async def leaderboards(ctx):
 def findAuthorCount(messages,author):
     count =0
     for msg in messages:
-        if(stringContainsName(msg.content,name)):
+        if(stringContainsName(msg.content,author)):
             count+=1
     return count
     
@@ -199,8 +199,8 @@ def removeDuplicates(stringList):
     unique = []
     
     for element in stringList:
-        if element not in unique:
-            unique.append(element)
+        if element.title() not in unique:
+            unique.append(element.title())
     return unique     
 
 # ASSUME: message input is a string
@@ -224,5 +224,5 @@ def retrieveAuthors(messages):
     return removeDuplicates(flatten(authors))
 
 
-
-bot.run(TOKEN)
+bot.run('ODE0NTM5ODA3NTMwODExNDQz.YDfVTw.meD_-3RZcfDX5gX2oRHkkl_2FW4')
+#bot.run(TOKEN)
