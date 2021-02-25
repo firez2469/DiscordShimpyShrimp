@@ -123,7 +123,7 @@ async def dumb_shit_specific(ctx, name=""):
         if(stringContainsName(msg.content, name)):
             containingName.append(msg)
     if (len(containingName) < 1):
-        await ctx.send(("No dumb shit quotes found by " + name))
+        await ctx.send(("No dumb shit quotes found containing " + name.title()))
     else:
         msg = random.choice(containingName)
         await ctx.send(msg.content)
