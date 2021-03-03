@@ -177,7 +177,8 @@ async def dumb_shit_percent(ctx, name=""):
     outputMessage = name.title() + " shares " + str(percent) + "%" + " of all dumb shit quotes."
     
     await ctx.send(outputMessage)
-    
+  
+
 @bot.command()
 async def dumb_shit_getall(ctx, name=""):
     channel = bot.get_channel(803112589156024371)
@@ -193,6 +194,17 @@ async def dumb_shit_getall(ctx, name=""):
         outputMessage = outputMessage + quote + "\n\n" 
     
     await ctx.send(outputMessage)
+    
+    
+@bot.command()
+async def be_a_man(ctx):
+    channel = bot.get_channel(816486690982068234)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    msg = random.choice(messages)
+    await ctx.send(msg.content)
+    
+    
+    
 
 @bot.command()
 async def leaderboards(ctx):
