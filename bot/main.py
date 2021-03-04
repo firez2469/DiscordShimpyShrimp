@@ -192,7 +192,7 @@ async def dumb_shit_getall(ctx, name=""):
             theirQuotes.append(msg.content)
     
     for quote in theirQuotes:
-        if(len(outputMessage) > MSG_LENGTH):
+        if(len(outputMessage + quote + "\n\n") > MSG_LENGTH):
             await ctx.send(outputMessage)
             outputMessage = ""
         outputMessage = outputMessage + quote + "\n\n" 
@@ -210,7 +210,7 @@ async def be_a_man(ctx):
     
 @bot.command()
 async def prayer(ctx):
-    await ctx.send("Namu Amida btsu")
+    await ctx.send("Namu Amida butsu")
 
 @bot.command()
 async def leaderboards(ctx):
