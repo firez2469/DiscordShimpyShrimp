@@ -82,6 +82,7 @@ def messageListToStringList(msgList):
 
 
 MAX_MSGS = 400
+MSG_LENGTH = 2000
 bot = commands.Bot(command_prefix='.')
 counter = {}
 
@@ -191,6 +192,9 @@ async def dumb_shit_getall(ctx, name=""):
             theirQuotes.append(msg.content)
     
     for quote in theirQuotes:
+        if(len(outputMessage) > MSG_LENGTH):
+            await ctx.send(outputMessage)
+            outputMessage = ""
         outputMessage = outputMessage + quote + "\n\n" 
     
     await ctx.send(outputMessage)
@@ -204,7 +208,9 @@ async def be_a_man(ctx):
     await ctx.send(msg.content)
     
     
-    
+@bot.command()
+async def prayer(ctx):
+    await ctx.send("Namu Amida btsu")
 
 @bot.command()
 async def leaderboards(ctx):
