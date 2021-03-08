@@ -207,6 +207,19 @@ async def be_a_man(ctx):
     msg = random.choice(messages)
     await ctx.send(msg.content)
     
+@bot.command()
+async def be_a_man_count (ctx):
+    channel = bot.get_channel(816486690982068234)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    
+    await ctx.send("We are " + str(len(messages)) + " quotes closer to being a man.")
+    
+    
+@bot.command()
+async def ask_shrimp(ctx):
+    ballResponses = ["As I see it, yes.", "Ask again later.", "Better not tell you now.", "Cannot predict now", "Concentrate and ask again.", "Don't count on it.", "It is certain", "It is decidely so.", "Most likely.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Outlook good.", "Reply hazy, try again.", "Signs point to yes.", "Very doubtful.", "Without a doubt.", "Yes.", "Yes - definitely.", "You may rely on it."]
+    msg = random.choice(ballResponses)    
+    await ctx.send(msg)
     
 @bot.command()
 async def prayer(ctx):
