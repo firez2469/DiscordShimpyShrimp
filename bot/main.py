@@ -232,7 +232,7 @@ async def random_song(ctx):
     messages = await channel.history(limit=MAX_MSGS).flatten()
     
     msg = random.choice(messages)
-    await ctx.send("!play " + msg.content)
+    await ctx.send(";;play " + msg.content)
     
     if(not(stringContainsName("http"))):
         time.sleep(2)
