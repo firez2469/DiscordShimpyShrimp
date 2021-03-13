@@ -224,7 +224,9 @@ async def ask_shrimp(ctx):
 @bot.command()
 async def prayer(ctx):
     await ctx.send("Namu Amida butsu")
-    
+
+
+@bot.command()
 async def random_song(ctx):
     channel = bot.get_channel(820143026525175818)
     messages = await channel.history(limit=MAX_MSGS).flatten()
