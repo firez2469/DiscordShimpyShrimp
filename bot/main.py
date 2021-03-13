@@ -236,7 +236,7 @@ async def random_song(ctx):
     
     if(not(stringContainsName("http"))):
         time.sleep(2)
-        await ctx.send("1")
+        await ctx.send(";;play 1")
     
 
 @bot.command()
