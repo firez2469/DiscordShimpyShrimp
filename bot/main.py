@@ -4,7 +4,7 @@ import random
 from discord.ext import commands
 import asyncio
 import random 
-
+import time
 
 #def takes a string and converts it into a list of characters
 def stringToCharList(string):
@@ -217,13 +217,25 @@ async def be_a_man_count (ctx):
     
 @bot.command()
 async def ask_shrimp(ctx):
-    ballResponses = ["As I see it, yes.", "Ask again later.", "Better not tell you now.", "Cannot predict now", "Concentrate and ask again.", "Don't count on it.", "It is certain", "It is decidely so.", "Most likely.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Outlook good.", "Reply hazy, try again.", "Signs point to yes.", "Very doubtful.", "Without a doubt.", "Yes.", "Yes - definitely.", "You may rely on it."]
+    ballResponses = ["As I see it, yes.", "Ask again later.", "Better not tell you now.", "Cannot predict now", "Concentrate and ask again.", "Don't count on it.", "It is certain.", "It is decidely so.", "Most likely.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Outlook good.", "Reply hazy, try again.", "Signs point to yes.", "Very doubtful.", "Without a doubt.", "Yes.", "Yes - definitely.", "You may rely on it."]
     msg = random.choice(ballResponses)    
     await ctx.send(msg)
     
 @bot.command()
 async def prayer(ctx):
     await ctx.send("Namu Amida butsu")
+    
+async def random_song(ctx):
+    channel = bot.get_channel(820143026525175818)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    
+    msg = random.choice(messages)
+    await ctx.send("!play " + msg)
+    
+    if(not(stringContainsName("http"))):
+        time.sleep(2)
+        await ctx.send("1")
+    
 
 @bot.command()
 async def leaderboards(ctx):
