@@ -238,6 +238,17 @@ async def random_song(ctx):
         time.sleep(2)
         await ctx.send(";;play 1")
     
+@bot.command()
+async def hug(ctx, target):
+    
+    hugGifs = ["https://media.giphy.com/media/lrr9rHuoJOE0w/source.gif", "https://media.giphy.com/media/PHZ7v9tfQu0o0/source.gif", "https://media.giphy.com/media/IRUb7GTCaPU8E/source.gif"]
+    gif = random.choice(hugGifs)
+    
+    if(target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
+        await ctx.send("@" + str(ctx.message.author) + " gave me a hug thank you!")
+    else:
+        await ctx.send("@" + str(ctx.message.author) + " gave " + target + " a hug!")
+    await ctx.send(gif)
 
 @bot.command()
 async def leaderboards(ctx):
