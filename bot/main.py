@@ -266,6 +266,8 @@ async def hug(ctx, target):
             await ctx.send("My dad gave me a hug!!")
         else: 
             await ctx.send(ctx.author.mention + " gave me a hug thank you!")
+    elif(ctx.author.id == 690402649555861524):
+        await ctx.send("Zoey hugging" + target.title() + "'s mom lmao.")
     else:
         await ctx.send(ctx.author.mention + " gave " + target.title() + " a hug!")
     await ctx.send(gif)
