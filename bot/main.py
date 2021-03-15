@@ -267,7 +267,7 @@ async def hug(ctx, target):
         else: 
             await ctx.send(ctx.author.mention + " gave me a hug thank you!")
     else:
-        await ctx.send(ctx.author.mention + " gave " + target + " a hug!")
+        await ctx.send(ctx.author.mention + " gave " + target.title() + " a hug!")
     await ctx.send(gif)
 
 @bot.command()
