@@ -242,6 +242,8 @@ async def random_song(ctx):
 async def hug(ctx, target):
     
     dadId = 181213007597142017
+    lucyId = 406162486220423168
+    cooperId = 755919229248602164
     
     hugGifs = ["https://media.giphy.com/media/lrr9rHuoJOE0w/source.gif", 
                "https://media.giphy.com/media/PHZ7v9tfQu0o0/source.gif",
@@ -253,10 +255,12 @@ async def hug(ctx, target):
                "https://media.giphy.com/media/vTtibSrt4dlIc/source.gif"]
     gif = random.choice(hugGifs)
     
-    if((target.lower() == "shaun" and ctx.author.id == 406162486220423168) or (target.lower() == "lucy" and ctx.author.id == dadId)):
+    if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
         await ctx.send("Oh my godd eww cooties!!")
-    elif((target.lower() == "lucy" and ctx.author.id == 755919229248602164) or (target.lower() == "cooper" and ctx.author.id == 406162486220423168)):
+    elif((target.lower() == "lucy" or target.lower() == "cooper") and (ctx.author.id == cooperId or ctx.author.id == lucyId)):
         await ctx.send("GINGER moment")
+    elif((target.lower() == "shaun" or target.lower() == "cooper") and (ctx.author.id == cooperId or ctx.author.id == dadId)):
+        await ctx.send("Lady killers")
     elif(target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
         if(ctx.author.id == dadId):
             await ctx.send("My dad gave me a hug!!")
