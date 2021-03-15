@@ -241,11 +241,16 @@ async def random_song(ctx):
 @bot.command()
 async def hug(ctx, target):
     
+    dadId = 181213007597142017
+    
     hugGifs = ["https://media.giphy.com/media/lrr9rHuoJOE0w/source.gif", "https://media.giphy.com/media/PHZ7v9tfQu0o0/source.gif", "https://media.giphy.com/media/IRUb7GTCaPU8E/source.gif"]
     gif = random.choice(hugGifs)
     
     if(target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
-        await ctx.send(ctx.author.mention + " gave me a hug thank you!")
+        if(ctx.author.id == dadId):
+            await ctx.send("My dad gave me a hug!!")
+        else: 
+            await ctx.send(ctx.author.mention + " gave me a hug thank you!")
     else:
         await ctx.send(ctx.author.mention + " gave " + target + " a hug!")
     await ctx.send(gif)
