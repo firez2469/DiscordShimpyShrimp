@@ -245,9 +245,9 @@ async def hug(ctx, target):
     gif = random.choice(hugGifs)
     
     if(target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
-        await ctx.send("@" + str(ctx.message.author) + " gave me a hug thank you!")
+        await ctx.send(ctx.author.mention() + " gave me a hug thank you!")
     else:
-        await ctx.send("@" + str(ctx.message.author) + " gave " + target + " a hug!")
+        await ctx.send(ctx.author.mention() + " gave " + target + " a hug!")
     await ctx.send(gif)
 
 @bot.command()
