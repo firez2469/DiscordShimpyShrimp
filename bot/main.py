@@ -253,9 +253,11 @@ async def hug(ctx, target):
                "https://media.giphy.com/media/vTtibSrt4dlIc/source.gif"]
     gif = random.choice(hugGifs)
     
-    if(target.lower() == "shaun" and ctx.author.id == 406162486220423168):
+    if((target.lower() == "shaun" and ctx.author.id == 406162486220423168) or (target.lower() == "lucy" and ctx.author.id == dadId)):
         await ctx.send("Oh my godd eww cooties!!")
-    if(target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
+    elif((target.lower() == "lucy" and ctx.author.id == 755919229248602164) or (target.lower() == "cooper" and ctx.author.id == 406162486220423168)):
+        await ctx.send("GINGER moment")
+    elif(target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
         if(ctx.author.id == dadId):
             await ctx.send("My dad gave me a hug!!")
         else: 
