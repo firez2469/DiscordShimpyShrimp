@@ -243,7 +243,14 @@ async def hug(ctx, target):
     
     dadId = 181213007597142017
     
-    hugGifs = ["https://media.giphy.com/media/lrr9rHuoJOE0w/source.gif", "https://media.giphy.com/media/PHZ7v9tfQu0o0/source.gif", "https://media.giphy.com/media/IRUb7GTCaPU8E/source.gif"]
+    hugGifs = ["https://media.giphy.com/media/lrr9rHuoJOE0w/source.gif", 
+               "https://media.giphy.com/media/PHZ7v9tfQu0o0/source.gif",
+               "https://media.giphy.com/media/IRUb7GTCaPU8E/source.gif", 
+               "https://media.giphy.com/media/yidUzriaAGJbsxt58k/source.gif", 
+               "https://media.giphy.com/media/KL7xA3fLx7bna/source.gif",
+               "https://media.giphy.com/media/U4LhzzpfTP7NZ4UlmH/source.gif", 
+               "https://media.giphy.com/media/VGACXbkf0AeGs/source.gif",
+               "https://media.giphy.com/media/vTtibSrt4dlIc/source.gif"]
     gif = random.choice(hugGifs)
     
     if(target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
