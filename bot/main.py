@@ -273,6 +273,10 @@ async def hug(ctx, target):
     await ctx.send(gif)
 
 @bot.command()
+async def frog_test(ctx):
+    await ctx.send("https://i.imgur.com/3PtWjz6.jpg")
+    
+@bot.command()
 async def leaderboards(ctx):
     _leaderboards = {}
     channel = bot.get_channel(803112589156024371)
