@@ -7,7 +7,7 @@ import os
 
 def fileToStringList(fileName):
     listOfStrings = []    
-    file = open(fileName, 'r')
+    file = open(('/app/' + fileName), 'r')
     for line in file:
         listOfStrings.append(line.strip("\n"))
     file.close()
@@ -15,7 +15,7 @@ def fileToStringList(fileName):
         
 
 def addString(fileName, stringToAdd):
-    file = open(fileName, 'a+')
+    file = open(('/app/' + fileName), 'a+')
     file.write(stringToAdd)
     file.close()
         
