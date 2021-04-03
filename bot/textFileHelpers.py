@@ -8,13 +8,12 @@ def fileToStringList(fileName):
     listOfStrings = []    
     try:
         file = open(fileName, 'r')
+        for line in file:
+            listOfStrings.append(line.strip("\n"))
     finally:
         file.close()
+        return listOfStrings
         
-    for line in file:
-        listOfStrings.append(line.strip("\n"))
-    return listOfStrings
-
 
 def addString(fileName, stringToAdd):
     try:
