@@ -5,66 +5,20 @@ from discord.ext import commands
 import asyncio
 import random 
 import time
+import stringHelpers as sh
+import listHelpers as lh
+import textFileHelpers as txtHelp
 
-#def takes a string and converts it into a list of characters
-def stringToCharList(string):
-    charList = []
-    
-    for char in string:
-        charList.append(char)
-    return charList
-        
-#takes a list of chars and concatenates all indices left to right
-def charListToString(charList):
-    finalString =  ''
-    
-    for char in charList:
-        finalString += char
-    return finalString
-    
-#takes a string and removes all instances of the specified character
-def removeChar(targetChar, string):
-    stringToChars = stringToCharList(string)
-    
-    cleanCharList = []
-    
-    for char in stringToChars:
-        if(not(char == targetChar)):
-            cleanCharList.append(char)
-    return charListToString(cleanCharList)
-
-#Takes a string and replaces every instance of the target character with the
-#replacement character
-def replaceCharIn(targetChar, replacementChar, msg):
-    stringToChars = stringToCharList(msg)
-    
-    cleanCharList = []
-    
-    for char in stringToChars:
-        if(char == targetChar):
-            cleanCharList.append(replacementChar)
-        else:
-            cleanCharList.append(char)
-    return charListToString(cleanCharList)
-
-#goes through a list of chars and replaces all of them with the replacement char
-def replaceCharsIn(targetChars, replacementChar, string):
-    finalString = string
-    
-    for char in targetChars:
-        finalString = replaceCharIn(char, replacementChar, finalString)
-    return finalString
-            
 #helpful commands for dealing with messages
 #takes a Message object and returns it's content
 def messageToString(msg):
     return msg.content
 
-TARGET_CHARS = stringToCharList("-?.,;:!")
+TARGET_CHARS = sh.stringToCharList("-?.,;:!")
 
 #determines whether a name appears in the String
 def stringContainsName(msg, name):
-    if name.lower() in replaceCharsIn(TARGET_CHARS," ", msg.lower()).split():
+    if name.lower() in sh.replaceCharsIn(TARGET_CHARS," ", msg.lower()).split():
         return True
     else:
         return False
@@ -245,14 +199,8 @@ async def hug(ctx, target):
     lucyId = 406162486220423168
     cooperId = 755919229248602164
     
-    hugGifs = ["https://media.giphy.com/media/lrr9rHuoJOE0w/source.gif", 
-               "https://media.giphy.com/media/PHZ7v9tfQu0o0/source.gif",
-               "https://media.giphy.com/media/IRUb7GTCaPU8E/source.gif", 
-               "https://media.giphy.com/media/yidUzriaAGJbsxt58k/source.gif", 
-               "https://media.giphy.com/media/KL7xA3fLx7bna/source.gif",
-               "https://media.giphy.com/media/U4LhzzpfTP7NZ4UlmH/source.gif", 
-               "https://media.giphy.com/media/VGACXbkf0AeGs/source.gif",
-               "https://media.giphy.com/media/vTtibSrt4dlIc/source.gif"]
+    hugGifs = txtHelp.fileToStringList("hugGifs.txt")
+    
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
@@ -272,9 +220,20 @@ async def hug(ctx, target):
         await ctx.send(ctx.author.mention + " gave " + target.title() + " a hug!")
     await ctx.send(gif)
 
+
+@commands.has_role('Admin')
+@bot.command()
+async def add_hug_gif(ctx, link):
+    if (sh.isValidLink(link)):
+        txtHelp.addString("hugGifs.txt", link)
+        await ctx.send("The link was added successfully!")
+    else:
+        await ctx.send("Link failed to be added, invalid.")
+        
 @bot.command()
 async def frog_test(ctx):
     await ctx.send("https://i.imgur.com/3PtWjz6.jpg")
+    
     
 @bot.command()
 async def leaderboards(ctx):
@@ -319,25 +278,7 @@ def sortDict(dict1):
         print(dict1)
         return dict1
     
-#takes a 2 dimensional list and returns it as a single dimensional list
-def flatten(list2d):
-    flatList = []
-    
-    for element in list2d:
-        if(type(element) is list):
-            for item in element:
-                flatList.append(item)
-        else:
-            flatList.append(element)
-    return flatList
 
-def removeDuplicates(stringList):
-    unique = []
-    
-    for element in stringList:
-        if element.title() not in unique:
-            unique.append(element.title())
-    return unique     
 
 # ASSUME: message input is a string
 def lookForAuthor(message):
@@ -357,7 +298,7 @@ def retrieveAuthors(messages):
     authors = []
     for msg in messages:
         authors.append(lookForAuthor(msg.content))
-    return removeDuplicates(flatten(authors))
+    return lh.removeDuplicates(lh.flatten(authors))
 
 
 bot.run(TOKEN)
