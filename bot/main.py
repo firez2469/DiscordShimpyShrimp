@@ -238,6 +238,10 @@ async def wtf(ctx):
 async def frog_test(ctx):
     await ctx.send("https://i.imgur.com/3PtWjz6.jpg")
     
+@commands.has_role('Admin')    
+@bot.command()
+async def get_directory(ctx):
+    await ctx.send(txtHelp.getFilePath())
     
 @bot.command()
 async def leaderboards(ctx):

@@ -3,6 +3,7 @@
 Methods for handling txt files
 Author: Shaun Seward
 """
+import os
 
 def fileToStringList(fileName):
     listOfStrings = []    
@@ -19,6 +20,6 @@ def addString(fileName, stringToAdd):
     file.close()
         
     
-    
-            
-
+def getFilePath():
+    cwd = os.getcwd()
+    return ("Current working directory: " + cwd)
