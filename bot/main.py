@@ -200,7 +200,7 @@ async def hug(ctx, target):
     cooperId = 755919229248602164
     
     hugGifs = txtHelp.fileToStringList("hugGifs.txt")
-    
+    gifsText = str(open('./bot/hugGifs.txt').read())
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
@@ -243,7 +243,7 @@ async def frog_test(ctx):
 async def get_directory(ctx):
     await ctx.send(os.path.abspath('hugGifs.txt'))
     #await ctx.send(txtHelp.getFilePath())
-    await ctx.send(str(open('./bot/hugGifs.txt').read()))
+    await ctx.send(str(open('./bot/hugGifs.txt').read().split(' ')[0]))
     
 @bot.command()
 async def leaderboards(ctx):
