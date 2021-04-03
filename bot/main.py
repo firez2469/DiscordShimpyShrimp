@@ -223,8 +223,12 @@ async def hug(ctx, target):
 
 @commands.has_role('Admin')
 @bot.command()
-async def add_hug_gif(ctx, link):
+async def add_hug(ctx, link):
     await ctx.send("why")
+    
+@bot.command()
+async def wtf(ctx):
+    await ctx.send("wtf")
         
 @bot.command()
 async def frog_test(ctx):
