@@ -19,11 +19,10 @@ def fileToStringList(fileName):
 def addString(fileName, stringToAdd):
     try:
         file = open(fileName, 'a+')
+        file.write(stringToAdd)
     finally:
         file.close()
-    
-    file.write(stringToAdd)
-    
+        
     
     
             
