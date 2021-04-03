@@ -241,7 +241,7 @@ async def frog_test(ctx):
 @commands.has_role('Admin')    
 @bot.command()
 async def get_directory(ctx):
-    await ctx.send(os.path.abspath())
+    await ctx.send(os.getcwd())
     #await ctx.send(txtHelp.getFilePath())
     
 @bot.command()
