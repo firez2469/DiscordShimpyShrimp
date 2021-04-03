@@ -224,11 +224,7 @@ async def hug(ctx, target):
 @commands.has_role('Admin')
 @bot.command()
 async def add_hug_gif(ctx, link):
-    if (sh.isValidLink(link)):
-        txtHelp.addString("hugGifs.txt", link)
-        await ctx.send("The link was added successfully!")
-    else:
-        await ctx.send("Link failed to be added, invalid.")
+    await ctx.send("why")
         
 @bot.command()
 async def frog_test(ctx):
