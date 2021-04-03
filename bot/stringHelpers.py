@@ -53,3 +53,6 @@ def replaceCharsIn(targetChars, replacementChar, string):
     for char in targetChars:
         finalString = replaceCharIn(char, replacementChar, finalString)
     return finalString
+
+def isValidLink(stringToCheck):
+    return True
