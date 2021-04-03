@@ -243,7 +243,7 @@ async def frog_test(ctx):
 async def get_directory(ctx):
     await ctx.send(os.path.abspath('hugGifs.txt'))
     #await ctx.send(txtHelp.getFilePath())
-    await ctx.send(str(open('hugGifs.txt').read()))
+    await ctx.send(str(open('./bot/hugGifs.txt').read()))
     
 @bot.command()
 async def leaderboards(ctx):
