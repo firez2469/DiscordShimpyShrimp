@@ -35,7 +35,7 @@ def messageListToStringList(msgList):
 
 
 
-MAX_MSGS = 400
+MAX_MSGS = 600
 MSG_LENGTH = 2000
 bot = commands.Bot(command_prefix='.')
 counter = {}
