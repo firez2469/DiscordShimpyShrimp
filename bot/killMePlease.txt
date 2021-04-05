@@ -1,0 +1,7 @@
+hello
+this
+is
+a
+test
+please add this string
+hello nick

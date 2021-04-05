@@ -16,7 +16,7 @@ def fileToStringList(fileName):
 
 def addString(fileName, stringToAdd):
     file = open((fileName), 'a+')
-    file.write(stringToAdd)
+    file.write(('\n' + stringToAdd))
     file.close()
         
     
