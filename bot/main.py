@@ -199,7 +199,7 @@ async def hug(ctx, target):
     lucyId = 406162486220423168
     cooperId = 755919229248602164
     
-    hugGifs = txtHelp.fileToStringList("hugGifs.txt")
+    hugGifs = txtHelp.fileToStringList("/app/hugGifs.txt")
     gifsText = str(open('./bot/hugGifs.txt').read())
     gif = random.choice(hugGifs)
     
@@ -225,7 +225,7 @@ async def hug(ctx, target):
 @bot.command()
 async def add_hug(ctx, link):
     if (sh.isValidLink(link)):
-        txtHelp.addString("hugGifs.txt", link)
+        txtHelp.addString("/app/hugGifs.txt", link)
         await ctx.send("The link was added successfully!")
     else:
         await ctx.send("Link failed to be added, invalid.")
