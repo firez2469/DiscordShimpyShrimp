@@ -257,6 +257,15 @@ async def cuddle(ctx, target):
     await ctx.send(ctx.author.mention + " is cuddling " + target.title())
     await ctx.send(gif)
     
+@bot.command()
+async def die(ctx):
+    hugGifs = txtHelp.fileToStringList("./bot/hugGifs.txt")
+    gif = random.choice(hugGifs)
+    
+    await ctx.send("Nope you can't do that sorry, have a hug instead.")
+    await ctx.send("Shrimpy Shrimp hugged" + ctx.author.mention + "!")
+    await ctx.send(gif)
+    
 """
 WIP CODE
 
