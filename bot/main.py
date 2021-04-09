@@ -263,7 +263,7 @@ async def die(ctx):
     gif = random.choice(hugGifs)
     
     await ctx.send("Nope you can't do that sorry, have a hug instead.")
-    await ctx.send("Shrimpy Shrimp hugged" + ctx.author.mention + "!")
+    await ctx.send("Shrimpy Shrimp hugged " + ctx.author.mention + "!")
     await ctx.send(gif)
     
 """
