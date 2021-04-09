@@ -200,7 +200,6 @@ async def hug(ctx, target):
     cooperId = 755919229248602164
     
     hugGifs = txtHelp.fileToStringList("./bot/hugGifs.txt")
-    gifsText = str(open('./bot/hugGifs.txt').read())
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
@@ -229,14 +228,17 @@ async def add_hug(ctx, link):
         await ctx.send("The link was added successfully!")
     else:
         await ctx.send("Link failed to be added, invalid.")
-    
-@bot.command()
-async def wtf(ctx):
-    await ctx.send("wtf")
         
 @bot.command()
-async def frog_test(ctx):
-    await ctx.send("https://i.imgur.com/3PtWjz6.jpg")
+async def punch(ctx, target):
+    punchGifs = txtHelp.fileToStringList("./bot/punchGifs.txt")
+    gif = random.choice(punchGifs)
+    
+    if (target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
+        await ctx.send("How dare you...")
+    else:
+        await ctx.send(ctx.author.mention + " punched " + target.title())
+        await ctx.send(gif)
     
 @commands.has_role('Admin')    
 @bot.command()
