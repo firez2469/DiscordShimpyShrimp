@@ -191,7 +191,15 @@ async def random_song(ctx):
     if(not(stringContainsName("http"))):
         time.sleep(2)
         await ctx.send(";;play 1")
-    
+
+"""
+INTERACTION COMMANDS:
+
+    hug(ctx, string)     -- hugs the target
+    punch(ctx, string)   -- punches the target
+    cuddle(ctx, string)  -- cuddles the target
+
+"""    
 @bot.command()
 async def hug(ctx, target):
     
@@ -239,7 +247,20 @@ async def punch(ctx, target):
     else:
         await ctx.send(ctx.author.mention + " punched " + target.title())
         await ctx.send(gif)
+  
+
+@bot.command()
+async def cuddle(ctx, target):
+    cuddleGifs = txtHelp.fileToStringList("./bot/cuddleGifs.txt")
+    gif = random.choice(cuddleGifs)
     
+    await ctx.send(ctx.author.mention + " is cuddling " + target.title())
+    await ctx.send(gif)
+    
+"""
+WIP CODE
+
+"""
 @commands.has_role('Admin')    
 @bot.command()
 async def get_directory(ctx):
