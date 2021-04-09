@@ -266,6 +266,37 @@ async def die(ctx):
     await ctx.send("Shrimpy Shrimp hugged " + ctx.author.mention + "!")
     await ctx.send(gif)
     
+@bot.command()
+async def discombobulate(ctx, target):
+    discombobulateGif = "https://thumbs.gfycat.com/IncredibleUglyAnophelesmosquito-max-1mb.gif"
+    
+    await ctx.send("This mustn't register on an emotional level, " + target)
+    time.sleep(2)
+    await ctx.send("First, distract target. ")
+    time.sleep(1)
+    await ctx.send("Then block his blind jab.")
+    time.sleep(1)
+    await ctx.send("Discombobulate")
+    await ctx.send(discombobulateGif)
+    time.sleep(3)
+    await ctx.send("Dazed, he'll attempt a wild hay maker. Employ the elbow block.")
+    time.sleep(1)
+    await ctx.send("Discombobulate")    
+    await ctx.send(discombobulateGif)
+    time.sleep(2)
+    await ctx.send("Block thorough left.")
+    time.sleep(2)
+    await ctx.send("Weaken right jaw.")
+    time.sleep(1)
+    await ctx.send("Discombobulate")    
+    await ctx.send(discombobulateGif)
+    time.sleep(3)
+    await ctx.send("In summary:")
+    time.sleep(2)
+    await ctx.send("Discombobulate")    
+    await ctx.send(discombobulateGif)
+    
+
 """
 WIP CODE
 
