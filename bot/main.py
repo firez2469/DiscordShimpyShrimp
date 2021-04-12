@@ -10,6 +10,7 @@ import stringHelpers as sh
 import listHelpers as lh
 import textFileHelpers as txtHelp
 import youtube_dl
+import discordDatabase as ddb
 
 
 #helpful commands for dealing with messages
@@ -78,7 +79,7 @@ async def help(ctx):
                              value="Takes a name and a username and determines how many of the users sent quotes contains their own name.",
                              inline=False)
         embedAdmin.add_field(name=".add_hug",
-                             value="Adds a hug to the hug directory (WIP)",
+                             value="Adds a hug to the hug directory",
                              inline=False)
         embedAdmin.add_field(name=".get_directory",
                              value="Command for determining the file directory.",
@@ -344,7 +345,7 @@ async def hug(ctx, target):
     lucyId = 406162486220423168
     cooperId = 755919229248602164
     
-    hugGifs = txtHelp.fileToStringList("./bot/hugGifs.txt")
+    hugGifs = ddb.discordChannelToStringList(bot, 831305587525419018)
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
@@ -368,11 +369,10 @@ async def hug(ctx, target):
 @commands.has_role('Admin')
 @bot.command()
 async def add_hug(ctx, link):
-    if (sh.isValidLink(link)):
-        txtHelp.addString("./bot/hugGifs.txt", link)
-        await ctx.send("The link was added successfully!")
-    else:
-        await ctx.send("Link failed to be added, invalid.")
+    channel = bot.get_channel(831305587525419018)
+    await channel.send(link)
+    await bot.delete_message(ctx.message)
+    await ctx.send("Link added successfully")
         
 @bot.command()
 async def punch(ctx, target):
