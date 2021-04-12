@@ -12,7 +12,7 @@ import textFileHelpers as txtHelp
 import youtube_dl
 
 
-async def discordChannelToStringList(bot, channelId):
+async def discordChannelToStringList(channelId):
     finalListOfStrings = []
     
     channel = bot.get_channel(channelId)
