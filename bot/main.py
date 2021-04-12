@@ -345,7 +345,7 @@ async def hug(ctx, target):
     cooperId = 755919229248602164
     
     channel = bot.get_channel(831305587525419018)
-    hugGifs = await channel.history(limi=MAX_MSGS).flatten()
+    hugGifs = await channel.history(limit=MAX_MSGS).flatten()
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
