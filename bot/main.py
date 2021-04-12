@@ -12,6 +12,8 @@ import textFileHelpers as txtHelp
 import youtube_dl
 
 
+youtube_dl.utils.bug_reports_message = lambda: ''
+
 
 ytdl_format_options = {
     'format': 'bestaudio/best',
