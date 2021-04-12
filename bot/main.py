@@ -151,7 +151,7 @@ async def dumb_shit_compare_to(ctx, name, user):
         if(msg.author.name == targetId):
             targetSeen += 1
     
-    await ctx.send(str((targetSeen / len(lom)) * 100) + "%")
+    await ctx.send(str(int(targetSeen / len(lom)) * 1000 / 10) + "% are from themselves")
 
     
 @bot.command()
