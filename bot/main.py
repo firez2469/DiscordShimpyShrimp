@@ -60,6 +60,7 @@ async def help(ctx):
         description="Shrimpy Shrimp Commands",
         color = 0x808080
         )
+    embed.set_footer(text="Developed by D.J.~Sheep")
     embed.add_field(name=".dumb_shit",
                     value="Returns a random dumb shit quote",
                     inline=False)
