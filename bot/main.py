@@ -133,6 +133,25 @@ async def dumb_shit_percent(ctx, name=""):
     
     await ctx.send(outputMessage)
   
+@commands.has_role('Admin')
+@bot.command()
+async def dumb_shit_compare_to(ctx, target):
+    channel = bot.get_channel(803112589156024371)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    targetId = 252522510862516225
+    targetSeen = 0
+    targetName = target
+    lom = []
+    
+    for msg in messages:
+        if(stringContainsName(msg.content, targetName)):
+            lom.append(msg)
+    
+    for msg in lom:
+        if(msg.author == targetId):
+            targetSeen += 1
+    
+    await ctx.send(str((targetSeen / len(lom)) * 100) + "%")
 
 @bot.command()
 async def dumb_shit_getall(ctx, name=""):
