@@ -12,17 +12,6 @@ import textFileHelpers as txtHelp
 import youtube_dl
 
 
-async def discordChannelToStringList(channelId):
-    finalListOfStrings = []
-    
-    channel = bot.get_channel(channelId)
-    messages = await channel.history(limit=MAX_MSGS).flatten()
-    
-    for msg in messages:
-        finalListOfStrings.append(msg.content)
-        
-    return finalListOfStrings
-
 #helpful commands for dealing with messages
 #takes a Message object and returns it's content
 def messageToString(msg):
@@ -355,7 +344,8 @@ async def hug(ctx, target):
     lucyId = 406162486220423168
     cooperId = 755919229248602164
     
-    hugGifs = discordChannelToStringList(831305587525419018)
+    channel = bot.get_channel(831305587525419018)
+    hugGifs = await channel.history(limi=MAX_MSGS).flatten()
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
@@ -373,7 +363,7 @@ async def hug(ctx, target):
         await ctx.send("Zoey hugging " + target.title() + "'s mom lmao.")
     else:
         await ctx.send(ctx.author.mention + " gave " + target.title() + " a hug!")
-    await ctx.send(gif)
+    await ctx.send(gif.content)
 
 
 @commands.has_role('Admin')
