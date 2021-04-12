@@ -34,7 +34,11 @@ def messageListToStringList(msgList):
     return stringList
         
 
-
+def findRole(listOfRoles, roleName):
+    for role in listOfRoles:
+        if(role.name == roleName):
+            return True
+    return False
 
 MAX_MSGS = 600
 MSG_LENGTH = 2000
@@ -55,6 +59,27 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def help(ctx):
+    
+    if(findRole(ctx.message.author.roles, "Admin")):
+        embedAdmin = discord.Embed(
+            title="Admin Help",
+            description="Shrimpy Shrimp Admin Commands",
+            color = 0x808080)
+        embedAdmin.footer(text="Developed by D.J.~Sheep")
+        embedAdmin.add_field(name=".dumb_shit_loop",
+                             value="Returns n amount of dumb shit quotes.")
+        embedAdmin.add_field(name=".dumb_shit_shaun",
+                             value="Dumb Shaun command lol")
+        embedAdmin.add_field(name=".dumb_shit_compare_to",
+                             value="Takes a name and a username and determines how many of the users sent quotes contains their own name.")
+        embedAdmin.add_field(name=".add_hug",
+                             value="Adds a hug to the hug directory (WIP)")
+        embedAdmin.add_field(name=".get_directory",
+                             value="Command for determining the file directory.")
+        embedAdmin.add_field(name=".leaderboards",
+                             value="Generates a leaderboard for all dumb shit quotes.")
+        await ctx.send(ctx.message.author, embed=embedAdmin)
+        
     embed = discord.Embed(
         title="Help",
         description="Shrimpy Shrimp Commands",
@@ -411,7 +436,8 @@ async def get_directory(ctx):
     await ctx.send(os.path.abspath('hugGifs.txt'))
     #await ctx.send(txtHelp.getFilePath())
     await ctx.send(str(open('./bot/hugGifs.txt').read().split(' ')[0]))
-    
+
+@commands.has_role('Admin')    
 @bot.command()
 async def leaderboards(ctx):
     _leaderboards = {}
