@@ -6,7 +6,7 @@ import discord
 
 MAX_MSGS = 600
 
-def discordChannelToStringList(bot, channelId):
+async def discordChannelToStringList(bot, channelId):
     finalListOfStrings = []
     
     channel = bot.get_channel(channelId)
