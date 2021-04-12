@@ -198,16 +198,16 @@ async def ask_shrimp(ctx):
     
 @bot.command()
 async def prayer(ctx):
-    embedVar = discord.Embed(
+    embed = discord.Embed(
         title="Daily Prayer", 
         description="Namu Amida butsu!",
         colour = discord.colour.blue())
-    embedVar.set_image(url='https://static.wikia.nocookie.net/real-life-heroes/images/9/94/Gautama-buddha-1.jpg/revision/latest/top-crop/width/360/height/450?cb=20180205063148')
-    embedVar.set_author(name='Buddha',
+    embed.set_image(url='https://static.wikia.nocookie.net/real-life-heroes/images/9/94/Gautama-buddha-1.jpg/revision/latest/top-crop/width/360/height/450?cb=20180205063148')
+    embed.set_author(name='Buddha',
                      icon_url='https://static.wikia.nocookie.net/real-life-heroes/images/9/94/Gautama-buddha-1.jpg/revision/latest/top-crop/width/360/height/450?cb=20180205063148')
-    embedVar.add_field(name=ctx.message.author.name,
+    embed.add_field(name=ctx.message.author.name,
                        value="has called for our daily prayer.", inline=False)
-    await ctx.send(embed=embedVar)
+    await ctx.say(embed=embed)
 
 
 @bot.command()
