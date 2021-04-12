@@ -138,7 +138,7 @@ async def dumb_shit_percent(ctx, name=""):
 async def dumb_shit_compare_to(ctx, name, user):
     channel = bot.get_channel(803112589156024371)
     messages = await channel.history(limit=MAX_MSGS).flatten()
-    targetId = user
+    targetUser = user
     targetSeen = 0
     targetName = name
     lom = []
@@ -148,7 +148,7 @@ async def dumb_shit_compare_to(ctx, name, user):
             lom.append(msg)
     
     for msg in lom:
-        if(msg.author.name == targetId):
+        if(msg.author.name == targetUser):
             targetSeen += 1
     
     await ctx.send(str(int(targetSeen / len(lom)) * 1000 / 10) + "% are from themselves")
