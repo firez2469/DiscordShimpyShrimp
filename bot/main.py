@@ -371,7 +371,7 @@ async def hug(ctx, target):
 async def add_hug(ctx, link):
     channel = bot.get_channel(831305587525419018)
     await channel.send(link)
-    await bot.delete_message(ctx.message)
+    ctx.message.delete()
     await ctx.send("Link added successfully")
         
 @bot.command()
