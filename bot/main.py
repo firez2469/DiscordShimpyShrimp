@@ -9,6 +9,7 @@ import time
 import stringHelpers as sh
 import listHelpers as lh
 import textFileHelpers as txtHelp
+import youtube_dl
 
 
 #helpful commands for dealing with messages
