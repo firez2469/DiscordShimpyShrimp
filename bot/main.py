@@ -44,6 +44,8 @@ counter = {}
 
 TOKEN = os.getenv('DISCORD_TOKEN')
 
+bot.remove_command('help')
+
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
@@ -51,6 +53,56 @@ async def on_ready():
     #await channel.send('**THE NUKES WILL SOON BE DROPPED**')
     print(bot.guilds)
 
+@bot.command(pass_context=True)
+async def help(ctx):
+    embed = discord.Embed(
+        title="Help",
+        description="Shrimpy Shrimp Commands",
+        color = 0x808080
+        )
+    embed.add_field(name=".dumb_shit",
+                    value="Returns a random dumb shit quote",
+                    inline=False)
+    embed.add_field(name=".dumb_shit_specific",
+                    value="Takes a name and returns a random dumb shit quote from that person",
+                    inline=False)
+    embed.add_field(name=".dumb_shit_count",
+                    value="Takes a name and returns how many dumb shit quotes this person has",
+                    inline=False)
+    embed.add_field(name=".dumb_shit_percent",
+                    value="Takes a name and determines the percent of all dumb shit quotes they have contributed.",
+                    inline=False)
+    embed.add_field(name=".dumb_shit_getall",
+                    value="Takes a name and returns all of their dumb shit quotes",
+                    inline=False)
+    embed.add_field(name=".be_a_man",
+                    value="Returns a random be a man quote",
+                    inline=False)
+    embed.add_field(name=".be_a_man_count",
+                    value="Returns the total amount of be a man quotes",
+                    inline=False)
+    embed.add_field(name=".ask_shrimp",
+                    value="Ask Shrimpy Shrimp a question",
+                    inline=False)
+    embed.add_field(name=".prayer",
+                    value="Sends a daily prayer",
+                    inline=False)
+    embed.add_field(name=".hug",
+                    value="Takes a name and hugs the given target",
+                    inline=False)
+    embed.add_field(name=".punch",
+                    value="Takes a name and punches the given target",
+                    inline=False)
+    embed.add_field(name=".cuddle",
+                    value="Takes a name and cuddles the given target",
+                    inline=False)
+    embed.add_field(name=".die",
+                    value="Dies",
+                    inline=False)
+    embed.add_field(name=".discombobulate",
+                    value="Takes a name and discombobulates the given target.",
+                    inline=False)
+    await ctx.send(embed=embed)
 
 
 @bot.command()
@@ -95,10 +147,6 @@ async def dumb_shit_specific(ctx, name=""):
     else:
         msg = random.choice(containingName)
         await ctx.send(msg.content)
-        
-@bot.command()
-async def contributors(ctx):
-    await ctx.send('Bot was developed by firez2469 \n Contributed to by DjSheep')
 
 @bot.command()
 async def dumb_shit_count(ctx, name=""):
