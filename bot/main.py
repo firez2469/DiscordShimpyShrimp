@@ -206,7 +206,7 @@ async def prayer(ctx):
     embedVar.set_author(name='Buddha',
                      icon_url='https://static.wikia.nocookie.net/real-life-heroes/images/9/94/Gautama-buddha-1.jpg/revision/latest/top-crop/width/360/height/450?cb=20180205063148')
     embedVar.add_field(name=ctx.message.author.name,
-                       value="has called for our daily prayer.")
+                       value="has called for our daily prayer.", inline=False)
     await ctx.send(embed=embedVar)
 
 
