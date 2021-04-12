@@ -10,8 +10,18 @@ import stringHelpers as sh
 import listHelpers as lh
 import textFileHelpers as txtHelp
 import youtube_dl
-import discordDatabase as ddb
 
+
+async def discordChannelToStringList(bot, channelId):
+    finalListOfStrings = []
+    
+    channel = bot.get_channel(channelId)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    
+    for msg in messages:
+        finalListOfStrings.append(msg.content)
+        
+    return finalListOfStrings
 
 #helpful commands for dealing with messages
 #takes a Message object and returns it's content
@@ -345,7 +355,7 @@ async def hug(ctx, target):
     lucyId = 406162486220423168
     cooperId = 755919229248602164
     
-    hugGifs = ddb.discordChannelToStringList(bot, 831305587525419018)
+    hugGifs = discordChannelToStringList(bot, 831305587525419018)
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
