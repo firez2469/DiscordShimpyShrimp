@@ -355,7 +355,7 @@ async def hug(ctx, target):
     lucyId = 406162486220423168
     cooperId = 755919229248602164
     
-    hugGifs = discordChannelToStringList(bot, 831305587525419018)
+    hugGifs = discordChannelToStringList(831305587525419018)
     gif = random.choice(hugGifs)
     
     if((target.lower() == "shaun" or target.lower() == "lucy") and (ctx.author.id == lucyId or ctx.author.id == dadId)):
