@@ -1,5 +1,6 @@
 # bot.py
 import os
+import discord
 import random
 from discord.ext import commands
 import asyncio
@@ -197,7 +198,10 @@ async def ask_shrimp(ctx):
     
 @bot.command()
 async def prayer(ctx):
-    await ctx.send("Namu Amida butsu")
+    embedVar = discord.Embed(title="Daily Prayer", description="Namu Amida butsu!")
+    embedVar.add_field(name=ctx.message.author.name, value="Has called for our daily prayer.", inline=False)
+    embedVar.add_field(value="https://www.lotussculpture.com/mm5/graphics/00000001/1-Japanese-Stone-Meditating-Buddha-Kamakura-Diabutsu.jpg", inline=False)
+    await ctx.send(embed=embedVar)
 
 
 @bot.command()
