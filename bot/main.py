@@ -65,7 +65,7 @@ async def help(ctx):
             title="Admin Help",
             description="Shrimpy Shrimp Admin Commands",
             color = 0x808080)
-        embedAdmin.footer(text="Developed by D.J.~Sheep")
+        embedAdmin.set_footer(text="Developed by D.J.~Sheep")
         embedAdmin.add_field(name=".dumb_shit_loop",
                              value="Returns n amount of dumb shit quotes.")
         embedAdmin.add_field(name=".dumb_shit_shaun",
