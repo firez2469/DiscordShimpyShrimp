@@ -243,13 +243,17 @@ async def be_a_man_count (ctx):
     channel = bot.get_channel(816486690982068234)
     messages = await channel.history(limit=MAX_MSGS).flatten()
     
+    
+    #to find an image for embed
+    beamanphotos = txtHelp.fileToStringList("./bot/beaman.txt")
+    photo = random.choice(beamanphotos)
     embed = discord.Embed(
         title="Be a Man",
         description=("We are " + str(len(messages)) + " tips closer to being a man."),
         color = 0xff0000)
     embed.set_author(name="Be a Man Guy",
                      icon_url="https://yt3.ggpht.com/ytc/AAUvwnjoP97mMYHZDqiXHS11JO5Z0fvYZpXLnSZH4xUY=s900-c-k-c0x00ffffff-no-rj")
-    embed.set_image(url="https://img.buzzfeed.com/buzzfeed-static/static/2021-03/2/20/asset/682fe1e39732/sub-buzz-729-1614718539-1.png?crop=776%3A920%3B0%2C227&downsize=700%3A%2A&output-quality=auto&output-format=auto")
+    embed.set_image(url=photo)
 
     await ctx.send(embed=embed)
     
