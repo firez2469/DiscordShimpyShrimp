@@ -207,7 +207,7 @@ async def prayer(ctx):
                      icon_url='https://static.wikia.nocookie.net/real-life-heroes/images/9/94/Gautama-buddha-1.jpg/revision/latest/top-crop/width/360/height/450?cb=20180205063148')
     embed.add_field(name=ctx.message.author.name,
                        value="has called for our daily prayer.", inline=False)
-    await ctx.say(embed=embed)
+    await ctx.send(embed=embed)
 
 
 @bot.command()
