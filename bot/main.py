@@ -84,7 +84,7 @@ async def help(ctx):
         embedAdmin.add_field(name=".leaderboards",
                              value="Generates a leaderboard for all dumb shit quotes.",
                              inline=False)
-        await ctx.send_message(ctx.message.author.id, embed=embedAdmin)
+        await ctx.send(ctx.message.author.id, embed=embedAdmin)
         
     embed = discord.Embed(
         title="Help",
