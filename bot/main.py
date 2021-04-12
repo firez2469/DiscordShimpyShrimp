@@ -201,7 +201,7 @@ async def prayer(ctx):
     embed = discord.Embed(
         title="Daily Prayer", 
         description="Namu Amida butsu!",
-        colour = discord.colour.blue())
+        color=0x00ff00)
     embed.set_image(url='https://static.wikia.nocookie.net/real-life-heroes/images/9/94/Gautama-buddha-1.jpg/revision/latest/top-crop/width/360/height/450?cb=20180205063148')
     embed.set_author(name='Buddha',
                      icon_url='https://static.wikia.nocookie.net/real-life-heroes/images/9/94/Gautama-buddha-1.jpg/revision/latest/top-crop/width/360/height/450?cb=20180205063148')
