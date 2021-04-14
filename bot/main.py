@@ -439,14 +439,14 @@ WIP CODE
 
 """
 
-async def userFind(ctx, targetUsername):
-    listOfMembers = await ctx.guild.members
+def userFind(ctx, targetUsername):
+    listOfMembers = ctx.guild.members
     
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick):
-            return member
+            return member.mention
         
-    return False
+    return targetUsername
 @commands.has_role('Admin')    
 @bot.command()
 async def get_directory(ctx):
