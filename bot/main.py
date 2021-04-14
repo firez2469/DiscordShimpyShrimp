@@ -440,7 +440,7 @@ WIP CODE
 """
 
 def userFind(ctx, targetUsername):
-    listOfMembers = ctx.message.server.members
+    listOfMembers = ctx.guild.members
     
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick == targetUsername):
