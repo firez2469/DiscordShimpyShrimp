@@ -382,7 +382,7 @@ async def punch(ctx, target):
     if (target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
         await ctx.send("How dare you...")
     else:
-        await ctx.send(ctx.author.mention + " punched " + userFind(ctx, target))
+        await ctx.send(ctx.author.mention + " punched " + target.title())
         await ctx.send(gif)
   
 
@@ -451,7 +451,6 @@ def userFind(ctx, targetUsername):
     
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick == targetUsername):
-            print(member.name)
             return member.mention()
         
     return targetUsername
