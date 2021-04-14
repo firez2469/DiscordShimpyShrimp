@@ -382,7 +382,7 @@ async def punch(ctx, target):
     if (target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
         await ctx.send("How dare you...")
     else:
-        await ctx.send(ctx.author.mention + " punched " + target.title())
+        await ctx.send(ctx.author.mention + " punched " + userFind(ctx, target))
         await ctx.send(gif)
   
 
@@ -438,6 +438,15 @@ async def discombobulate(ctx, target):
 WIP CODE
 
 """
+
+async def userFind(ctx, targetUsername):
+    listOfMembers = await ctx.guild.members
+    
+    for member in listOfMembers:
+        if (member.name == targetUsername or member.nick):
+            return member.mention 
+        
+    return targetUsername
 @commands.has_role('Admin')    
 @bot.command()
 async def get_directory(ctx):
