@@ -443,7 +443,7 @@ def userFind(ctx, targetUsername):
     listOfMembers = ctx.guild.members
     
     for member in listOfMembers:
-        if (member.name == targetUsername or member.nick):
+        if (member.name == targetUsername or member.nick == targetUsername):
             return member.mention()
         
     return targetUsername
