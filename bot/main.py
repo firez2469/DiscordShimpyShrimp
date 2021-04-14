@@ -444,7 +444,7 @@ def userFind(ctx, targetUsername):
     
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick):
-            return member.mention
+            return member.mention()
         
     return targetUsername
 @commands.has_role('Admin')    
