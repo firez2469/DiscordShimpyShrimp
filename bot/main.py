@@ -474,10 +474,7 @@ async def leaderboards(ctx):
 @bot.command()
 async def mentionTarget(ctx, target):
     target = userFind(ctx, target)
-    if (target == False):
-        await ctx.send(target)
-    else:
-        await ctx.send(target.mention)
+    await ctx.send(target)
     
 def findAuthorCount(messages,author):
     count =0
