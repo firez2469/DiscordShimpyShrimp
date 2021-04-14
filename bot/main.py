@@ -438,9 +438,16 @@ async def discombobulate(ctx, target):
 WIP CODE
 
 """
+def membersListToString(lom):
+    newList = []
+    for member in lom:
+        newList.append(member.name)
+    return newList
 
 def userFind(ctx, targetUsername):
     listOfMembers = ctx.guild.members
+    
+    print(membersListToString(listOfMembers))
     
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick == targetUsername):
