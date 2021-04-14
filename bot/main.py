@@ -444,9 +444,9 @@ async def userFind(ctx, targetUsername):
     
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick):
-            return member.mention 
+            return member
         
-    return targetUsername
+    return False
 @commands.has_role('Admin')    
 @bot.command()
 async def get_directory(ctx):
@@ -469,6 +469,15 @@ async def leaderboards(ctx):
     for auth in newLeaderboards:
         msg+="{0}:{1} quotes \n".format(auth,newLeaderboards[auth])
     await ctx.send(msg)
+    
+@commands.has_role('Admin')
+@bot.command()
+async def mentionTarget(ctx, target):
+    target = userFind(ctx, target)
+    if (target == False):
+        await ctx.send(target)
+    else:
+        await ctx.send(target.mention)
     
 def findAuthorCount(messages,author):
     count =0
