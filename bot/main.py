@@ -44,7 +44,8 @@ def findRole(listOfRoles, roleName):
 
 MAX_MSGS = 600
 MSG_LENGTH = 2000
-bot = commands.Bot(command_prefix='.')
+intents = discord.Intents().all()
+bot = commands.Bot(command_prefix='.', intents=intents)
 counter = {}
 
 
