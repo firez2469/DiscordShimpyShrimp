@@ -449,13 +449,10 @@ def membersListToString(lom):
 @bot.command()
 async def userFind(ctx, targetUsername):
     listOfMembers = ctx.guild.members
-    
-    print(membersListToString(listOfMembers))
-    
+        
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick == targetUsername):
             await ctx.send(member.mention())
-    await ctx.send("done")
         
     
 @commands.has_role('Admin')    
