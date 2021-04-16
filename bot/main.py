@@ -446,7 +446,7 @@ def membersListToString(lom):
 
 @commands.has_role('Admin')
 @bot.command()
-def userFind(ctx, targetUsername):
+async def userFind(ctx, targetUsername):
     listOfMembers = ctx.guild.members
     
     print(membersListToString(listOfMembers))
