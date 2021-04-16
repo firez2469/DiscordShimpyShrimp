@@ -181,8 +181,8 @@ async def dumb_shit_loop(ctx,loop=5):
         title="That is one big pile of shit...",
         description=('Here are ' + str(loop) + ' Dumb Shit Quotes.'),
         color=0xff0000)
-    embed.set_author(name='Mr. Gump',
-                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    embed.set_author(name='Dr. Malcolm',
+                     icon_url='https://static.wikia.nocookie.net/jurrassic-wolrd/images/a/ad/Large_jurassic_park_blu-ray_1x.jpg/revision/latest?cb=20151224073550')
     embed.set_image(url='https://us.v-cdn.net/5021526/uploads/editor/9z/7xw6a6jrcznt.gif')
     embed.add_field(name='Dumb Shit Quotes:', value=lh.newLineString(messagesForEmbed))
     
