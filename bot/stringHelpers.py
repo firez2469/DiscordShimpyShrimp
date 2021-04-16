@@ -16,6 +16,7 @@ def listToStringList(stringList):
             else:
                 output += ("and " + stringList[i])
     return output    
+
 def charInString(charToFind, string):
     for char in string:
         if char == charToFind:

@@ -155,50 +155,46 @@ def makeDumbShitEmbed(message):
     return embed
 """
 
-@commands.has_role('Admin')
 @bot.command()
-async def dumb_shit_admin(ctx):
+async def dumb_shit(ctx):
     channel = bot.get_channel(803112589156024371)
     #channel = bot.get_channel(803349900036669490)
     messages = await channel.history(limit=MAX_MSGS).flatten()
     msg = random.choice(messages)
-    actualQuote = sh.extractQuote(msg.content)
-    
-    print(msg.content, "\n", actualQuote, "\n")
-    
+        
     embed = discord.Embed(
         title="Dumb Shit Moment", 
         description="Uh oh someone was stupid!",
         color=0xff0000)
-    embed.set_image(url='https://i.ytimg.com/vi/eVFd46qABi0/hqdefault.jpg')
+    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
     embed.set_author(name='Mr. Gump',
                      icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
     
     embed.add_field(name=str(msg.author.name + ' has found ' + sh.findAuthor(msg.content)), 
                     value='guilty of dumb shit!!', inline=False)
     embed.add_field(name='Evidence:', value=sh.extractQuote(msg.content), inline=False)
-    
+    embed.set_footer(text='Stupidity at its finest~')
     await ctx.send(embed=embed)
-
-@bot.command()
-async def dumb_shit(ctx,speech='False'):
-    isTTS = speech=='True'
-    channel = bot.get_channel(803112589156024371)
-    #channel = bot.get_channel(803349900036669490)
-    messages = await channel.history(limit=MAX_MSGS).flatten()
-    msg = random.choice(messages)
-    
-    await ctx.send(msg.content,tts=isTTS)
 
 @commands.has_role('Admin')
 @bot.command()
-async def dumb_shit_loop(ctx,loop=5,speech='False'):
-    isTTS = speech=='True'
+async def dumb_shit_loop(ctx,loop=5):
     channel =bot.get_channel(803112589156024371)
     messages = await channel.history(limit=MAX_MSGS).flatten()
+    messagesForEmbed = []
     for av in range(loop):
         msg = random.choice(messages)
-        await ctx.send(msg.content,tts=isTTS)
+        messagesForEmbed.append(msg.content)
+        
+    embed = discord.Embed(
+        title="That's a lot of Dumb Shit",
+        description=('Here are ' + str(loop) + ' dumb shit quotes'),
+        color=0xff0000)
+    embed.set_author(name='Mr. Gump',
+                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
+    embed.add_field(name='Dumb Shit Quotes:', value=lh.newLineString(messagesForEmbed))
+    
 
 
 @bot.command()
@@ -221,24 +217,45 @@ async def dumb_shit_specific(ctx, name=""):
         await ctx.send(("No dumb shit quotes found containing " + name.title()))
     else:
         msg = random.choice(containingName)
-        await ctx.send(msg.content)
-
+        embed = discord.Embed(
+        title="Dumb Shit Moment", 
+        description=("Uh oh, " + name + " was stupid!"),
+        color=0xff0000)
+        embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
+        embed.set_author(name='Mr. Gump',
+                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    
+        embed.add_field(name=str(msg.author.name + ' has found ' + sh.findAuthor(msg.content)), 
+                    value='guilty of dumb shit!!', inline=False)
+        embed.add_field(name='Evidence:', value=sh.extractQuote(msg.content), inline=False)
+        embed.set_footer(text='Stupidity at its finest~')
+        await ctx.send(embed=embed)
+        
 @bot.command()
-async def dumb_shit_count(ctx, name=""):
+async def dumb_shit_count(ctx, name="the server"):
     channel = bot.get_channel(803112589156024371)
     messages = await channel.history(limit=MAX_MSGS).flatten()
+    embed = discord.Embed(
+        title="Dumb Shit Count",
+        description = ("Total Count for" + name.title()),
+        color = 0xff0000)
+    embed.set_author(name='Mr. Gump',
+                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
     
     count = 0
-    outputMessage = ""
-    if(name == ""):
-        outputMessage = "As a server we have " + str(len(messages)) + " dumb shit quotes. I am sorry everyone."
+    if(name == "the server"):
+        embed.add_field(name="Final Tally:", 
+                        value=("As a server we have " + str(len(messages)) + " dumb shit quotes. I am sorry everyone."),
+                        inline=False)
     else: 
         for msg in messages:
             if(stringContainsName(msg.content, name)):
                 count += 1
         
-        outputMessage = name.title() + " has contributed " + str(count) + " dumb shit quotes... wow"
-    await ctx.send(outputMessage)
+        embed.add_field(name="Final Tally:", 
+                        value = (name.title() + " has contributed " + str(count) + " dumb shit quotes... wow"),
+                        inline=False)
+    await ctx.send(embed=embed)
     
 @bot.command()
 async def dumb_shit_percent(ctx, name=""):
