@@ -60,6 +60,7 @@ async def on_ready():
     #await channel.send('**THE NUKES WILL SOON BE DROPPED**')
     print(bot.guilds)
 
+# HELP COMMAND
 @bot.command(pass_context=True)
 async def help(ctx):
     
@@ -87,6 +88,10 @@ async def help(ctx):
         embedAdmin.add_field(name=".leaderboards",
                              value="Generates a leaderboard for all dumb shit quotes.",
                              inline=False)
+        embedAdmin.add_field(name=".mention_target",
+                             value="Takes a target name in and pings them if they are present in the server",
+                             inline=False)
+        
         await ctx.message.author.send(embed=embedAdmin)
         
     embed = discord.Embed(
@@ -577,7 +582,7 @@ async def leaderboards(ctx):
     
 @commands.has_role('Admin')
 @bot.command()
-async def mentionTarget(ctx, target):
+async def mention_target(ctx, target):
     target = userFind(ctx, target)
     await ctx.send(target)
     
