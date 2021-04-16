@@ -36,5 +36,5 @@ def isInList(target, listToSearch):
 def newLineString(listOfStrings):
     finalString = ""
     for string in listOfStrings:
-        finalString += (string + "\n")
+        finalString += (string + "\n\n")
     return finalString

@@ -144,21 +144,6 @@ async def help(ctx):
                     inline=False)
     await ctx.send(embed=embed)
 
-"""
-def makeDumbShitEmbed(message):
-    embed = discord.Embed(
-        title="Dumb Shit Moment", 
-        description="Uh oh someone was stupid!",
-        color=0x00ff00)
-    embed.set_image(url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FDumbHoeMemes%2F&psig=AOvVaw3idA5n1eNyAy30cVIycO17&ust=1618685894972000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIj_m4C5g_ACFQAAAAAdAAAAABAE')
-    embed.set_author(name='Mr. Gump',
-                     icon_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FForrest_Gump_(character)&psig=AOvVaw1dzQyJYAtWZoLZuZBy2OWD&ust=1618688824521000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNDNtfXDg_ACFQAAAAAdAAAAABAE')
-    embed.add_field(name=(message.author.mention + " has found " + sh.findAuthor(message.content)), 
-                    value="guilty of dumb shit!!", inline=False)
-    embed.add_field(name=("Evidence:"),
-                    value=sh.extractQuote(message.content), inline=False)
-    return embed
-"""
 
 @bot.command()
 async def dumb_shit(ctx):
@@ -193,12 +178,12 @@ async def dumb_shit_loop(ctx,loop=5):
         messagesForEmbed.append(msg.content)
         
     embed = discord.Embed(
-        title="That's a lot of Dumb Shit",
-        description=('Here are ' + str(loop) + ' dumb shit quotes'),
+        title="That is one big pile of shit...",
+        description=('Here are ' + str(loop) + ' Dumb Shit Quotes.'),
         color=0xff0000)
     embed.set_author(name='Mr. Gump',
                      icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
-    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
+    embed.set_image(url='https://us.v-cdn.net/5021526/uploads/editor/9z/7xw6a6jrcznt.gif')
     embed.add_field(name='Dumb Shit Quotes:', value=lh.newLineString(messagesForEmbed))
     
     await ctx.send(embed=embed)
