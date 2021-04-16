@@ -3,6 +3,31 @@
 String Handlers
 @author: Shaun
 """
+import listHelpers as lh
+
+def listToStringList(stringList):
+    output = ""
+    if (len(stringList) == 2):
+        return (stringList[0] + " and " + stringList[1])
+    else:
+        for i in range(len(stringList)):
+            if (i != (len(stringList) - 1)):
+                output += (stringList[i] + ", ")
+            else:
+                output += ("and " + stringList[i])
+    return output    
+def charInString(charToFind, string):
+    for char in string:
+        if char == charToFind:
+            return True
+    return False
+
+def findIndexOfChar(targetChar, string):
+    indexAt = -1
+    for i in range(len(string)):
+        if string[i] == targetChar:
+            indexAt = i
+    return indexAt
 
 # def takes a string and converts it into a list of characters
 def stringToCharList(string):
@@ -54,5 +79,46 @@ def replaceCharsIn(targetChars, replacementChar, string):
         finalString = replaceCharIn(char, replacementChar, finalString)
     return finalString
 
+def findMultipleAuthors(stringToFindAuthors):
+    uniqueAuthors = []
+    
+    splitMessage = stringToFindAuthors.split("\n")
+    for quote in splitMessage:
+        authorName = ""
+        for char in quote:
+            if (char == ":"):
+                if (not(lh.isInList(authorName, uniqueAuthors))):
+                    uniqueAuthors.append(authorName)
+                    break
+            authorName += char
+    return listToStringList(uniqueAuthors)
+
+def findAuthor(stringToFindAuthor):
+    indexOfDash = findIndexOfChar("-", stringToFindAuthor)
+    indexOfColon = findIndexOfChar(":", stringToFindAuthor)
+    
+    if(indexOfColon != -1):
+        return findMultipleAuthors(stringToFindAuthor)
+    elif(indexOfDash != -1):
+        return stringToFindAuthor[indexOfDash + 2:]
+    
+def extractQuote(dumbShitMessage):
+    quote = ""
+    seenQuote = False
+    if(charInString(":", dumbShitMessage)):
+        return dumbShitMessage
+
+    for char in dumbShitMessage:
+        if (char == "\""):
+            quote += char
+            seenQuote = not(seenQuote)
+        elif (seenQuote):
+            quote += char
+    return quote
+            
+        
 def isValidLink(stringToCheck):
     return True
+
+print(extractQuote("\"I feel like playing cards with God.\" - Lucy proceeding to eat 5 jelly beans"))
+print(extractQuote("Shaun: \"Testing\"\nNick: \"Yes sir!\"\nShaun: \"Hellooooo\"\nLucy: \"derp\""))

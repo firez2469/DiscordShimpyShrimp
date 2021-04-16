@@ -26,3 +26,9 @@ def flatten(list2d):
         else:
             flatList.append(element)
     return flatList
+
+def isInList(target, listToSearch):
+    for element in listToSearch:
+        if (element == target):
+            return True
+    return False

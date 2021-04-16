@@ -139,6 +139,29 @@ async def help(ctx):
                     inline=False)
     await ctx.send(embed=embed)
 
+def makeDumbShitEmbed(message):
+    embed = discord.Embed(
+        title="Dumb Shit Moment", 
+        description="Uh oh someone was stupid!",
+        color=0x00ff00)
+    embed.set_image(url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FDumbHoeMemes%2F&psig=AOvVaw3idA5n1eNyAy30cVIycO17&ust=1618685894972000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIj_m4C5g_ACFQAAAAAdAAAAABAE')
+    embed.set_author(name='Mr. Gump',
+                     icon_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FForrest_Gump_(character)&psig=AOvVaw1dzQyJYAtWZoLZuZBy2OWD&ust=1618688824521000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNDNtfXDg_ACFQAAAAAdAAAAABAE')
+    embed.add_field(name=(message.author.mention + " has found " + sh.findAuthor(message.content)), 
+                    value="guilty of dumb shit!!", inline=False)
+    embed.add_field(name=("Evidence:"),
+                    value=sh.getQuote(message.content), inline=False)
+    return embed
+
+@commands.has_role('Admin')
+@bot.command()
+async def dumb_shit_admin(ctx):
+    channel = bot.get_channel(803112589156024371)
+    #channel = bot.get_channel(803349900036669490)
+    messages = await channel.history(limit=MAX_MSGS).flatten()
+    msg = random.choice(messages)
+    
+    await ctx.send(embed=makeDumbShitEmbed(msg))
 
 @bot.command()
 async def dumb_shit(ctx,speech='False'):
