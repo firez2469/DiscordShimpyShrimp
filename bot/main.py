@@ -150,7 +150,7 @@ def makeDumbShitEmbed(message):
     embed.add_field(name=(message.author.mention + " has found " + sh.findAuthor(message.content)), 
                     value="guilty of dumb shit!!", inline=False)
     embed.add_field(name=("Evidence:"),
-                    value=sh.getQuote(message.content), inline=False)
+                    value=sh.extractQuote(message.content), inline=False)
     return embed
 
 @commands.has_role('Admin')
