@@ -106,7 +106,7 @@ async def help(ctx):
     embed.add_field(name=".dumb_shit_specific (String)",
                     value="Takes a name and returns a random dumb shit quote from that person",
                     inline=False)
-    embed.add_field(name=".dumb_shit_count (Integer)",
+    embed.add_field(name=".dumb_shit_count (String)",
                     value="Takes a name and returns how many dumb shit quotes this person has",
                     inline=False)
     embed.add_field(name=".dumb_shit_percent (String)",
