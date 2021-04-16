@@ -109,8 +109,8 @@ def extractQuote(dumbShitMessage):
         return dumbShitMessage
 
     for char in dumbShitMessage:
-        if (char == "\""):
-            quote += char
+        if (char == "\"" or char == "“" or char == "”"):
+            quote += "\""
             seenQuote = not(seenQuote)
         elif (seenQuote):
             quote += char
@@ -120,5 +120,6 @@ def extractQuote(dumbShitMessage):
 def isValidLink(stringToCheck):
     return True
 
+print(extractQuote("“ Is he weird melon one with the glasses” - Emily"))
 print(findAuthor("\"*in British accent* Babyyy you gotta get a Battle Bus!!!\" - Lucy"))
 print(extractQuote("Shaun: \"Testing\"\nNick: \"Yes sir!\"\nShaun: \"Hellooooo\"\nLucy: \"derp\""))
