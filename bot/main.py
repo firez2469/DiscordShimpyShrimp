@@ -370,9 +370,9 @@ async def hug(ctx, target):
         else: 
             await ctx.send(ctx.author.mention + " gave me a hug thank you!")
     elif(ctx.author.id == 690402649555861524):
-        await ctx.send("Zoey hugging " + target.title() + "'s mom lmao.")
+        await ctx.send("Zoey hugging " + userFind(ctx, target) + "'s mom lmao.")
     else:
-        await ctx.send(ctx.author.mention + " gave " + target.title() + " a hug!")
+        await ctx.send(ctx.author.mention + " gave " + userFind(ctx, target) + " a hug!")
     await ctx.send(gif.content)
 
 
@@ -401,7 +401,7 @@ async def cuddle(ctx, target):
     cuddleGifs = txtHelp.fileToStringList("./bot/cuddleGifs.txt")
     gif = random.choice(cuddleGifs)
     
-    await ctx.send(ctx.author.mention + " is cuddling " + target.title())
+    await ctx.send(ctx.author.mention + " is cuddling " + userFind(ctx, target))
     await ctx.send(gif)
     
 @bot.command()
@@ -417,7 +417,7 @@ async def die(ctx):
 async def discombobulate(ctx, target):
     discombobulateGif = "https://thumbs.gfycat.com/IncredibleUglyAnophelesmosquito-max-1mb.gif"
     
-    await ctx.send("This mustn't register on an emotional level, " + target)
+    await ctx.send("This mustn't register on an emotional level, " + userFind(ctx, target))
     time.sleep(2)
     await ctx.send("First, distract target. ")
     time.sleep(1)
