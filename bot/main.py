@@ -444,6 +444,8 @@ def membersListToString(lom):
         newList.append(member.name)
     return newList
 
+@commands.has_role('Admin')
+@bot.command()
 def userFind(ctx, targetUsername):
     listOfMembers = ctx.guild.members
     
@@ -454,6 +456,7 @@ def userFind(ctx, targetUsername):
             return member.mention()
         
     return targetUsername
+
 @commands.has_role('Admin')    
 @bot.command()
 async def get_directory(ctx):
