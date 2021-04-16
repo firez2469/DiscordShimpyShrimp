@@ -452,7 +452,7 @@ async def userFind(ctx, targetUsername):
         
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick == targetUsername):
-            await ctx.send(member.mention())
+            await ctx.send(member.mention)
         
     
 @commands.has_role('Admin')    
