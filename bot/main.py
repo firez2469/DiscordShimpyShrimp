@@ -162,16 +162,17 @@ async def dumb_shit_admin(ctx):
     #channel = bot.get_channel(803349900036669490)
     messages = await channel.history(limit=MAX_MSGS).flatten()
     msg = random.choice(messages)
+    actualQuote = sh.extractQuote(msg.content)
     
-    print(msg.content)
+    print(msg.content, "\n", actualQuote, "\n")
     
     embed = discord.Embed(
         title="Dumb Shit Moment", 
         description="Uh oh someone was stupid!",
         color=0xff0000)
-    #embed.set_image(url='https://i.ytimg.com/vi/eVFd46qABi0/hqdefault.jpg')
-    #embed.set_author(name='Mr. Gump',
-     #                icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    embed.set_image(url='https://i.ytimg.com/vi/eVFd46qABi0/hqdefault.jpg')
+    embed.set_author(name='Mr. Gump',
+                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
     
     embed.add_field(name=str(msg.author.name + ' has found ' + sh.findAuthor(msg.content)), 
                     value='guilty of dumb shit!!', inline=False)
