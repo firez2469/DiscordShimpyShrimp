@@ -175,11 +175,7 @@ async def dumb_shit_admin(ctx):
     
     embed.add_field(name=str(msg.author.name + ' has found ' + sh.findAuthor(msg.content)), 
                     value='guilty of dumb shit!!', inline=False)
-    embed.add_field(name='name2', value='value2', inline=False)
-    #embed.add_field(name=(msg.author.name + " has found " + sh.findAuthor(msg.content)), 
-                   # value="guilty of dumb shit!!", inline=False)
-    #embed.add_field(name=("Evidence:"),
-                    #value=sh.extractQuote(msg.content), inline=False)
+    embed.add_field(name='Evidence:', value=sh.extractQuote(msg.content), inline=False)
     
     await ctx.send(embed=embed)
 
