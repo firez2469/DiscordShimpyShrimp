@@ -163,6 +163,8 @@ async def dumb_shit_admin(ctx):
     messages = await channel.history(limit=MAX_MSGS).flatten()
     msg = random.choice(messages)
     
+    print(msg.content)
+    
     embed = discord.Embed(
         title="Dumb Shit Moment", 
         description="Uh oh someone was stupid!",
