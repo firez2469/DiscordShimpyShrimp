@@ -338,6 +338,15 @@ INTERACTION COMMANDS:
     cuddle(ctx, string)  -- cuddles the target
 
 """    
+
+def userFind(ctx, targetUsername):
+    listOfMembers = ctx.guild.members
+        
+    for member in listOfMembers:
+        if (member.name == targetUsername or member.nick == targetUsername):
+            return member.mention
+    return targetUsername
+
 @bot.command()
 async def hug(ctx, target):
     
@@ -383,7 +392,7 @@ async def punch(ctx, target):
     if (target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
         await ctx.send("How dare you...")
     else:
-        await ctx.send(ctx.author.mention + " punched " + target.title())
+        await ctx.send(ctx.author.mention + " punched " + userFind(target))
         await ctx.send(gif)
   
 
@@ -445,15 +454,6 @@ def membersListToString(lom):
         newList.append(member.name)
     return newList
 
-@commands.has_role('Admin')
-@bot.command()
-async def userFind(ctx, targetUsername):
-    listOfMembers = ctx.guild.members
-        
-    for member in listOfMembers:
-        if (member.name == targetUsername or member.nick == targetUsername):
-            await ctx.send(member.mention)
-        
     
 @commands.has_role('Admin')    
 @bot.command()
