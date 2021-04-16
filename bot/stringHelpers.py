@@ -120,5 +120,5 @@ def extractQuote(dumbShitMessage):
 def isValidLink(stringToCheck):
     return True
 
-print(extractQuote("\"I feel like playing cards with God.\" - Lucy proceeding to eat 5 jelly beans"))
+print(findAuthor("\"*in British accent* Babyyy you gotta get a Battle Bus!!!\" - Lucy"))
 print(extractQuote("Shaun: \"Testing\"\nNick: \"Yes sir!\"\nShaun: \"Hellooooo\"\nLucy: \"derp\""))
