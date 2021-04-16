@@ -392,7 +392,7 @@ async def punch(ctx, target):
     if (target.lower() == "shrimpy" or target.lower() == "shrimpy shrimp"):
         await ctx.send("How dare you...")
     else:
-        await ctx.send(ctx.author.mention + " punched " + userFind(target))
+        await ctx.send(ctx.author.mention + " punched " + userFind(ctx, target))
         await ctx.send(gif)
   
 
