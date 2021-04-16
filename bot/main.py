@@ -172,10 +172,13 @@ async def dumb_shit_admin(ctx):
     embed.set_image(url='https://i.ytimg.com/vi/eVFd46qABi0/hqdefault.jpg')
     embed.set_author(name='Mr. Gump',
                      icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
-    embed.add_field(name=(msg.author.name + " has found " + sh.findAuthor(msg.content)), 
-                    value="guilty of dumb shit!!", inline=False)
-    embed.add_field(name=("Evidence:"),
-                    value=sh.extractQuote(msg.content), inline=False)
+    
+    embed.add_field(name='name', value='value', inline=False)
+    embed.add_field(name='name2', value='value2', inline=False)
+    #embed.add_field(name=(msg.author.name + " has found " + sh.findAuthor(msg.content)), 
+                   # value="guilty of dumb shit!!", inline=False)
+    #embed.add_field(name=("Evidence:"),
+                    #value=sh.extractQuote(msg.content), inline=False)
     
     await ctx.send(embed=embed)
 
