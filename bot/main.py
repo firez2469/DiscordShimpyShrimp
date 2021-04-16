@@ -175,6 +175,7 @@ async def dumb_shit(ctx):
     embed.add_field(name='Evidence:', value=sh.extractQuote(msg.content), inline=False)
     embed.set_footer(text='Stupidity at its finest~')
     await ctx.send(embed=embed)
+    await ctx.message.delete()
 
 @commands.has_role('Admin')
 @bot.command()
@@ -195,6 +196,9 @@ async def dumb_shit_loop(ctx,loop=5):
     embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
     embed.add_field(name='Dumb Shit Quotes:', value=lh.newLineString(messagesForEmbed))
     
+    await ctx.send(embed=embed)
+    await ctx.message.delete()
+
 
 
 @bot.command()
@@ -230,6 +234,7 @@ async def dumb_shit_specific(ctx, name=""):
         embed.add_field(name='Evidence:', value=sh.extractQuote(msg.content), inline=False)
         embed.set_footer(text='Stupidity at its finest~')
         await ctx.send(embed=embed)
+        await ctx.message.delete()
         
 @bot.command()
 async def dumb_shit_count(ctx, name="the server"):
@@ -258,6 +263,8 @@ async def dumb_shit_count(ctx, name="the server"):
                         value = (name.title() + " has contributed " + str(count) + " dumb shit quotes... wow"),
                         inline=False)
     await ctx.send(embed=embed)
+    await ctx.message.delete()
+
     
 @bot.command()
 async def dumb_shit_percent(ctx, name=""):
@@ -275,7 +282,7 @@ async def dumb_shit_percent(ctx, name=""):
     
     embed = discord.Embed(
         title="Dumb Shit Percentage",
-        description = ("Total Percentage for " + name.title()),
+        description = ("Total Percentage for " + name.title() + ":"),
         color = 0xff0000)
     embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
     embed.set_author(name='Mr. Gump',
@@ -286,6 +293,8 @@ async def dumb_shit_percent(ctx, name=""):
                     value=("belong to " + name.title()), inline=False)
     
     await ctx.send(embed=embed)
+    await ctx.message.delete()
+
   
 @commands.has_role('Admin')
 @bot.command()
@@ -306,6 +315,8 @@ async def dumb_shit_compare_to(ctx, name, user):
             targetSeen += 1
     
     await ctx.send(str(int(targetSeen / len(lom) * 1000) / 10) + "% are from themselves")
+    await ctx.message.delete()
+
 
     
 @bot.command()
@@ -336,6 +347,8 @@ async def dumb_shit_getall(ctx, name=""):
     embed.add_field(name="Quotes:", value=outputMessage, inline=False)
     
     await ctx.send(embed=embed)
+    await ctx.message.delete()
+
     
     
 @bot.command()
@@ -356,6 +369,8 @@ async def be_a_man(ctx):
                      icon_url="https://yt3.ggpht.com/ytc/AAUvwnjoP97mMYHZDqiXHS11JO5Z0fvYZpXLnSZH4xUY=s900-c-k-c0x00ffffff-no-rj")
     embed.set_image(url=photo)
     await ctx.send(embed=embed)
+    await ctx.message.delete()
+
     
 @bot.command()
 async def be_a_man_count (ctx):
@@ -376,6 +391,8 @@ async def be_a_man_count (ctx):
     embed.set_image(url=photo)
 
     await ctx.send(embed=embed)
+    await ctx.message.delete()
+
     
     
 @bot.command()
