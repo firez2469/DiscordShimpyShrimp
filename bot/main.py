@@ -167,10 +167,10 @@ async def dumb_shit_admin(ctx):
         title="Dumb Shit Moment", 
         description="Uh oh someone was stupid!",
         color=0xff0000)
-    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
+    embed.set_image(url='https://i.ytimg.com/vi/eVFd46qABi0/hqdefault.jpg')
     embed.set_author(name='Mr. Gump',
                      icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
-    embed.add_field(name=(msg.author.mention + " has found " + sh.findAuthor(msg.content)), 
+    embed.add_field(name=(msg.author.name + " has found " + sh.findAuthor(msg.content)), 
                     value="guilty of dumb shit!!", inline=False)
     embed.add_field(name=("Evidence:"),
                     value=sh.extractQuote(msg.content), inline=False)
