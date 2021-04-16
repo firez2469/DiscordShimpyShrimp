@@ -453,10 +453,10 @@ def userFind(ctx, targetUsername):
     
     for member in listOfMembers:
         if (member.name == targetUsername or member.nick == targetUsername):
-            return member.mention()
+            await ctx.send(member.mention())
+    await ctx.send("done")
         
-    return targetUsername
-
+    
 @commands.has_role('Admin')    
 @bot.command()
 async def get_directory(ctx):
