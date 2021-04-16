@@ -237,10 +237,12 @@ async def dumb_shit_count(ctx, name="the server"):
     messages = await channel.history(limit=MAX_MSGS).flatten()
     embed = discord.Embed(
         title="Dumb Shit Count",
-        description = ("Total Count for" + name.title()),
+        description = ("Total Count for " + name.title()),
         color = 0xff0000)
+    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
     embed.set_author(name='Mr. Gump',
                      icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    embed.set_footer(text='Stupidity at its finest~')
     
     count = 0
     if(name == "the server"):
@@ -270,9 +272,20 @@ async def dumb_shit_percent(ctx, name=""):
             theirQuotes += 1
     
     percent = int((theirQuotes / totalQuotes) * 1000) / 10
-    outputMessage = name.title() + " shares " + str(percent) + "%" + " of all dumb shit quotes."
     
-    await ctx.send(outputMessage)
+    embed = discord.Embed(
+        title="Dumb Shit Percentage",
+        description = ("Total Percentage for " + name.title()),
+        color = 0xff0000)
+    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
+    embed.set_author(name='Mr. Gump',
+                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    embed.set_footer(text='Stupidity at its finest~')
+    
+    embed.add_field(name=(str(percent) + "% of all Dumb Shit Quotes"), 
+                    value=("belong to " + name.title()), inline=False)
+    
+    await ctx.send(embed=embed)
   
 @commands.has_role('Admin')
 @bot.command()
@@ -312,7 +325,17 @@ async def dumb_shit_getall(ctx, name=""):
             outputMessage = ""
         outputMessage = outputMessage + quote + "\n\n" 
     
-    await ctx.send(outputMessage)
+    embed = discord.Embed(
+        title=("All of " + name.title() + "'s Dumb Shit Quotes"),
+        description = (name.title() + " must be really stupid lmao"),
+        color = 0xff0000)
+    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
+    embed.set_author(name='Mr. Gump',
+                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    embed.set_footer(text='Stupidity at its finest~')
+    embed.add_field(name="Quotes:", value=outputMessage, inline=False)
+    
+    await ctx.send(embed=embed)
     
     
 @bot.command()
