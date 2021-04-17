@@ -189,7 +189,7 @@ async def dumb_shit_loop(ctx,loop=5):
     pageCount = 1
     
     for message in messagesForEmbed:
-        if (len(currentEmbedValue) >= 1024):
+        if ((len(currentEmbedValue) + len(message)) >= 1024):
             embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
             currentEmbedValue = message + "\n"
             pageCount += 1
