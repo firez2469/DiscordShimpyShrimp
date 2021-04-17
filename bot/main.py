@@ -371,7 +371,7 @@ async def dumb_shit_getall(ctx, name=""):
 
 @bot.command()
 async def dumb_shit_add_quote(ctx, author, quote):
-    dumb_shit_channel = ctx.get_channel(803112589156024371)
+    dumb_shit_channel = bot.get_channel(803112589156024371)
     
     await dumb_shit_channel.send(("\"" + quote + "\" - " + author))
     
