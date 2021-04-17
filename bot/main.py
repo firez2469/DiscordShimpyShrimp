@@ -188,6 +188,7 @@ async def dumb_shit_loop(ctx,loop=5):
     currentEmbedValue = ""
     pageCount = 1
     
+    
     for message in messagesForEmbed:
         if ((len(currentEmbedValue) + len(message) + 2) >= 1024):
             embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
@@ -195,8 +196,7 @@ async def dumb_shit_loop(ctx,loop=5):
             pageCount += 1
         else:
             currentEmbedValue += (message + "\n\n")
-        
-    
+    embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
     
     
     
@@ -346,6 +346,7 @@ async def dumb_shit_getall(ctx, name=""):
     currentEmbedValue = ""
     pageCount = 1
     
+    
     for message in theirQuotes:
         if ((len(currentEmbedValue) + len(message) + 2) >= 1024):
             embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
@@ -353,7 +354,8 @@ async def dumb_shit_getall(ctx, name=""):
             pageCount += 1
         else:
             currentEmbedValue += (message + "\n\n")
-        
+    embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
+   
             
     await ctx.send(embed=embed)
     await ctx.message.delete()
