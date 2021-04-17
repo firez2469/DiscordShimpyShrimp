@@ -368,8 +368,17 @@ async def dumb_shit_getall(ctx, name=""):
     await ctx.send(embed=embed)
     await ctx.message.delete()
 
+
+@bot.command()
+async def dumb_shit_add_quote(ctx, author, quote):
+    dumb_shit_channel = ctx.get_channel(803112589156024371)
     
+    await dumb_shit_channel.send(("\"" + quote + "\" - " + author))
     
+
+"""
+BE A MAN CODE
+"""    
 @bot.command()
 async def be_a_man(ctx):
     channel = bot.get_channel(816486690982068234)
