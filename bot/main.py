@@ -189,12 +189,12 @@ async def dumb_shit_loop(ctx,loop=5):
     pageCount = 1
     
     for message in messagesForEmbed:
-        if ((len(currentEmbedValue) + len(message)) >= 1024):
+        if ((len(currentEmbedValue) + len(message) + 2) >= 1024):
             embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
-            currentEmbedValue = message + "\n"
+            currentEmbedValue = message + "\n\n"
             pageCount += 1
         else:
-            currentEmbedValue += (message + "\n")
+            currentEmbedValue += (message + "\n\n")
         
     
     
@@ -329,16 +329,10 @@ async def dumb_shit_getall(ctx, name=""):
     messages = await channel.history(limit=MAX_MSGS).flatten()
     
     theirQuotes = []
-    outputMessage = ""
     for msg in messages:
         if(stringContainsName(msg.content, name)):
             theirQuotes.append(msg.content)
     
-    for quote in theirQuotes:
-        if(len(outputMessage + quote + "\n\n") > MSG_LENGTH):
-            await ctx.send(outputMessage)
-            outputMessage = ""
-        outputMessage = outputMessage + quote + "\n\n" 
     
     embed = discord.Embed(
         title=("All of " + name.title() + "'s Dumb Shit Quotes"),
@@ -348,8 +342,19 @@ async def dumb_shit_getall(ctx, name=""):
     embed.set_author(name='Mr. Gump',
                      icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
     embed.set_footer(text='Stupidity at its finest~')
-    embed.add_field(name="Quotes:", value=outputMessage, inline=False)
     
+    currentEmbedValue = ""
+    pageCount = 1
+    
+    for message in messages:
+        if ((len(currentEmbedValue) + len(message) + 2) >= 1024):
+            embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
+            currentEmbedValue = message + "\n\n"
+            pageCount += 1
+        else:
+            currentEmbedValue += (message + "\n\n")
+        
+            
     await ctx.send(embed=embed)
     await ctx.message.delete()
 
