@@ -70,7 +70,7 @@ async def help(ctx):
             description="Shrimpy Shrimp Admin Commands",
             color = 0x808080)
         embedAdmin.set_footer(text="Developed by D.J.~Sheep")
-        embedAdmin.add_field(name=".dumb_shit_loop (Integer)",
+        embedAdmin.add_field(name=".dumb_shit_multi_admin (Integer)",
                              value="Returns n amount of dumb shit quotes.",
                              inline=False)
         embedAdmin.add_field(name=".dumb_shit_shaun",
@@ -105,6 +105,9 @@ async def help(ctx):
                     inline=False)
     embed.add_field(name=".dumb_shit_specific (String)",
                     value="Takes a name and returns a random dumb shit quote from that person",
+                    inline=False)
+    embed.add_field(name=".dumb_shit_multi (Integer <= 50, Default: 5)",
+                    value="Takes an integer from 1 to 50 and returns that many dumb shit quotes. Default is 5 quotes, given no input",
                     inline=False)
     embed.add_field(name=".dumb_shit_count (String)",
                     value="Takes a name and returns how many dumb shit quotes this person has",
@@ -167,40 +170,45 @@ async def dumb_shit(ctx):
     await ctx.send(embed=embed)
     await ctx.message.delete()
 
-@commands.has_role('Admin')
 @bot.command()
-async def dumb_shit_loop(ctx,loop=5):
-    channel =bot.get_channel(803112589156024371)
-    messages = await channel.history(limit=MAX_MSGS).flatten()
-    messagesForEmbed = []
-    for av in range(loop):
-        msg = random.choice(messages)
-        messagesForEmbed.append(msg.content)
+async def dumb_shit_multi(ctx,loop=5):
+    dumbShitLimit = 50
+    if (loop > dumbShitLimit):
+        await ctx.send("Cannot request more than " + str(dumbShitLimit) + " quotes.")
+    elif (loop < 1):
+        await ctx.send("Cannot retrieve less than 1 quote.")
+    else:
+        channel =bot.get_channel(803112589156024371)
+        messages = await channel.history(limit=MAX_MSGS).flatten()
+        messagesForEmbed = []
+        for av in range(loop):
+            msg = random.choice(messages)
+            messagesForEmbed.append(msg.content)
+            
+        embed = discord.Embed(
+            title="That is one big pile of shit...",
+            description=('Here are ' + str(loop) + ' Dumb Shit Quotes.'),
+            color=0xff0000)
+        embed.set_author(name='Dr. Malcolm',
+                         icon_url='https://static.wikia.nocookie.net/jurrassic-wolrd/images/a/ad/Large_jurassic_park_blu-ray_1x.jpg/revision/latest?cb=20151224073550')
+        embed.set_image(url='https://us.v-cdn.net/5021526/uploads/editor/9z/7xw6a6jrcznt.gif')
         
-    embed = discord.Embed(
-        title="That is one big pile of shit...",
-        description=('Here are ' + str(loop) + ' Dumb Shit Quotes.'),
-        color=0xff0000)
-    embed.set_author(name='Dr. Malcolm',
-                     icon_url='https://static.wikia.nocookie.net/jurrassic-wolrd/images/a/ad/Large_jurassic_park_blu-ray_1x.jpg/revision/latest?cb=20151224073550')
-    embed.set_image(url='https://us.v-cdn.net/5021526/uploads/editor/9z/7xw6a6jrcznt.gif')
-    
-    currentEmbedValue = ""
-    pageCount = 1
-    
-    
-    for message in messagesForEmbed:
-        if ((len(currentEmbedValue) + len(message) + 2) >= 1024):
-            embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
-            currentEmbedValue = message + "\n\n"
-            pageCount += 1
-        else:
-            currentEmbedValue += (message + "\n\n")
-    embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
-    
-    
-    
-    await ctx.send(embed=embed)
+        currentEmbedValue = ""
+        pageCount = 1
+        
+        
+        for message in messagesForEmbed:
+            if ((len(currentEmbedValue) + len(message) + 2) >= 1024):
+                embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
+                currentEmbedValue = message + "\n\n"
+                pageCount += 1
+            else:
+                currentEmbedValue += (message + "\n\n")
+        embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
+        
+        
+        
+        await ctx.send(embed=embed)
     await ctx.message.delete()
 
 
