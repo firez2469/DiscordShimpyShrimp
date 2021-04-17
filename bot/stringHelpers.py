@@ -23,6 +23,13 @@ def charInString(charToFind, string):
             return True
     return False
 
+def findIndexOfFirstChar(targetChar, string):
+    indexAt = -1
+    for i in range(len(string)):
+        if string[i] == targetChar:
+            return indexAt
+    return indexAt
+
 def findIndexOfChar(targetChar, string):
     indexAt = -1
     for i in range(len(string)):
@@ -121,6 +128,18 @@ def extractQuote(dumbShitMessage):
 def isValidLink(stringToCheck):
     return True
 
-print(extractQuote("“ Is he weird melon one with the glasses” - Emily"))
-print(findAuthor("\"*in British accent* Babyyy you gotta get a Battle Bus!!!\" - Lucy"))
-print(extractQuote("Shaun: \"Testing\"\nNick: \"Yes sir!\"\nShaun: \"Hellooooo\"\nLucy: \"derp\""))
+"""
+def validMultiQuote(quoteInQuestion):
+    seenQuote = False
+    
+    if(not(charInString(":", quoteInQuestion) and charInString("\n", quoteInQuestion))):
+        return False
+    else:
+        colonLocation = findIndexOfFirstChar(":", quoteInQuestion)
+        
+        if ((quoteInQuestion[colonLocation + 1], ))
+"""     
+
+#print(extractQuote("“ Is he weird melon one with the glasses” - Emily"))
+#print(findAuthor("\"*in British accent* Babyyy you gotta get a Battle Bus!!!\" - Lucy"))
+#print(extractQuote("Shaun: \"Testing\"\nNick: \"Yes sir!\"\nShaun: \"Hellooooo\"\nLucy: \"derp\""))
