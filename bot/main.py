@@ -184,7 +184,21 @@ async def dumb_shit_loop(ctx,loop=5):
     embed.set_author(name='Dr. Malcolm',
                      icon_url='https://static.wikia.nocookie.net/jurrassic-wolrd/images/a/ad/Large_jurassic_park_blu-ray_1x.jpg/revision/latest?cb=20151224073550')
     embed.set_image(url='https://us.v-cdn.net/5021526/uploads/editor/9z/7xw6a6jrcznt.gif')
-    embed.add_field(name='Dumb Shit Quotes:', value=lh.newLineString(messagesForEmbed))
+    
+    currentEmbedValue = ""
+    pageCount = 1
+    
+    for message in messagesForEmbed:
+        if (len(currentEmbedValue) >= 1024):
+            embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
+            currentEmbedValue = message + "\n"
+            pageCount += 1
+        else:
+            currentEmbedValue += (message + "\n")
+        
+    
+    
+    
     
     await ctx.send(embed=embed)
     await ctx.message.delete()
