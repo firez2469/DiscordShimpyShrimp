@@ -346,7 +346,7 @@ async def dumb_shit_getall(ctx, name=""):
     currentEmbedValue = ""
     pageCount = 1
     
-    for message in messages:
+    for message in theirQuotes:
         if ((len(currentEmbedValue) + len(message) + 2) >= 1024):
             embed.add_field(name=("Page " + str(pageCount) + ":"), value=currentEmbedValue, inline=False)
             currentEmbedValue = message + "\n\n"
