@@ -335,12 +335,12 @@ async def dumb_shit_getall(ctx, name=""):
     
     
     embed = discord.Embed(
-        title=("All of " + name.title() + "'s Dumb Shit Quotes"),
+        title=("That is one big pile of shit..."),
         description = (name.title() + " must be really stupid lmao"),
         color = 0xff0000)
-    embed.set_image(url='https://media.tenor.com/images/9133bff595c13cd663e40f6b73ff1196/tenor.gif')
-    embed.set_author(name='Mr. Gump',
-                     icon_url='https://upload.wikimedia.org/wikipedia/en/9/94/Forest_Gump_Character.jpg')
+    embed.set_image(url='https://us.v-cdn.net/5021526/uploads/editor/9z/7xw6a6jrcznt.gif')
+    embed.set_author(name='Dr. Malcolm',
+                     icon_url='https://static.wikia.nocookie.net/jurrassic-wolrd/images/a/ad/Large_jurassic_park_blu-ray_1x.jpg/revision/latest?cb=20151224073550')
     embed.set_footer(text='Stupidity at its finest~')
     
     currentEmbedValue = ""
