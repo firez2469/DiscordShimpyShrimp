@@ -173,7 +173,7 @@ async def dumb_shit(ctx):
 @bot.command()
 async def dumb_shit_multi(ctx,loop=5):
     dumbShitLimit = 50
-    if (loop > dumbShitLimit):
+    if (loop > dumbShitLimit and not(hasRole(ctx.message.author, 792805962070622219))):
         await ctx.send("Cannot request more than " + str(dumbShitLimit) + " quotes.")
     elif (loop < 1):
         await ctx.send("Cannot retrieve less than 1 quote.")
@@ -564,6 +564,15 @@ async def discombobulate(ctx, target):
 WIP CODE
 
 """
+
+def hasRole(user, roleID):
+    listOfRoles = user.roles
+    
+    for role in listOfRoles:
+        if(role.id == roleID):
+            return True
+    return False
+
 def membersListToString(lom):
     newList = []
     for member in lom:
