@@ -379,6 +379,14 @@ async def dumb_shit_add_quote(ctx, author, quote):
 """
 BE A MAN CODE
 """    
+
+@commands.has_role('Admin')
+@bot.command()
+async def add_string(ctx, string):
+    dumb_shit_channel = bot.get_channel(803112589156024371)
+    await dumb_shit_channel.send(string)
+    await ctx.message.delete()
+
 @bot.command()
 async def be_a_man(ctx):
     channel = bot.get_channel(816486690982068234)
